@@ -1,0 +1,16 @@
+Conserved pathways within bacteria and yeast as revealed by global protein network alignment
+Kelley, Sharan, Karp, Sittler, Root, Stockwell and Ideker
+------------------------------------------------------
+The authors do global network alignment between protein interaction networks of related organisms, in order to find out the conserved pathways between them. They score each pathway in terms of probability of true homology between aligned pair of proteins, as well as probability of true interactions between pairs of proteins along the pathway. They use yeast and bacteria PPI networks from DIP. They assess the results by comparing the aligned networks to randomly assigned alignments. They also use functional enrichment to assess the resulting conserved pathways.
+
+
+Assessing experimentally derived interactions in a small world
+Goldberg and Roth
+------------------------------------------------------
+The authors use the fact that PPI networks are small world networks, trying to infer false positives and true negatives. They devise a mutual clustering coefficient for every pair of nodes in the network. This coefficient should be high for pairs with true interactions. They test this measure against high confidence and experimental yeast data from CuraGen PathCalling Yeast Interaction Database, showing that it correlates to known interactions. Next, they devise a compound confidence measure, incorporating high-confidence evidence score and experimental evidence score alond with their new mutual clustering coefficient. They use it to better infer false positives, as well as predecting interactions that are not discovered yet in experiments.
+
+
+Comparative assessment of large-scale data sets of protein–protein interactions
+Mering, Krause, Snel, Cornell, Oliver, Fields and Bork
+-------------------------------------------------------
+The authors survey and compare a list of PPI data sets, including Y2H, mass spectrometry purification, correlated mRNA expression, synthetic lethality and in silico predictions. They also include manually curated MIPS and YPD as trusted reference sets. The study details overlaps and complementarities between data sets and their potential reasons. The study also provides a benchmark for the available data sets with respect to both coverage and accuracy, and uncovers biases in their interaction coverage with respect to protein abundance and cellular localization. Last, based on available data, it tries to estimate the number of real interactions present in Yeast.

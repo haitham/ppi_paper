@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{kelley}
+B.~P. Kelley, R.~Sharan, R.~M. Karp, E.~Sittler, D.~E. Root, B.~R. Stockwell,
+  and T.~Ideker, Conserved pathways within bacteria and yeast as revealed by
+  global protein network alignment, in {\em Proceedings of the National Academy
+  of Sciences of the United States of America, Vol. 100, No. 20\/}, September
+  1997.
+
+\bibitem{scott}
+J.~Scott, T.~Ideker, R.~M. Karp and R.~Sharan, Efficient algorithms for
+  detecting signaling pathways in protein interaction networks, in {\em
+  Proceedings of the 9th Annual international conference on Research in
+  Computational Molecular Biology\/}, RECOMB'05 (Springer-Verlag, Berlin,
+  Heidelberg, 2005).
+
+\bibitem{alon}
+N.~Alon, R.~Yuster and U.~Zwick, {\em J. ACM} , 844  (1995).
+
+\bibitem{gulsoy}
+G.~G\"{u}lsoy, B.~Gandhi and T.~Kahveci, Topology aware coloring of gene
+  regulatory networks, in {\em Proceedings of the 2nd ACM Conference on
+  Bioinformatics, Computational Biology and Biomedicine\/}, BCB '11 (ACM, New
+  York, NY, USA, 2011).
+
+\end{thebibliography}

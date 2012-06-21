@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue Jun 05 17:41:31 EDT 2012
+markTmpDer=true
+builderNum=6
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=haitham.tex
+outputFile=gabr.pdf
+langSpell=en
+markDer=true
+srcDir=
