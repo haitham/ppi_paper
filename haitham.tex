@@ -60,10 +60,10 @@ representing the protein interaction network, and a set of start nodes $S \in
 V$. For each $v \in V$, we want to find a minimum-weight simple path of length
 $m$, starting at any node $s \in S$ and ending at $v$.
 
-The traveling-salesman problem is polynomial-time reducible to this problem;
-therefore it is NP-hard\cite{scott}. Scott et al. presented a method for
-detecting pathways\cite{scott} using a generic technique devised by Alon et al. called
-\textit{color-coding}\cite{alon}. The basic idea of this method is to randomly
+Scott et al.\cite{scott} mentioned that the traveling-salesman problem is
+polynomial-time reducible to this problem; therefore it is NP-hard. They presented a method
+for detecting pathways using a generic technique devised by Alon et
+al.\cite{alon} called \textit{color-coding}. The basic idea of this method is to randomly
 assign each node in the graph one of $m$ different colors, and search for an
 optimal pathway in the restricted domain of colorful pathways. A pathway is
 considered colorful if and only if all of its nodes are different in color from
@@ -73,10 +73,13 @@ colorful ones at some instance. This confidence level builds up with each
 iteration by calculating a probability value that an optimal path is indeed
 colorful in this iteration. This \textit{success probability} value depends
 solely on the pathway length $m$ and doesn’t capitalize on available
-information like the network topology and color assignment.
+information like the network topology and color assignment. As a result, the
+method provides a theoretically correct but very conservative success
+probability value, and hence loses a very good potential for decreasing the
+number of iterations needed to accomplish a given confidence level.
 
-G{\"u}lsoy et al. presented an enhanced color-coding technique called
-\textit{k-hop coloring}\cite{gulsoy}. In essence, k-hop coloring makes use of
+G{\"u}lsoy et al.\cite{gulsoy} presented an enhanced color-coding technique
+called \textit{k-hop coloring}. In essence, k-hop coloring makes use of
 knowing the network topology and the node colors to assign the network a
 maximal value $k$ such that the network is k-hop colorable. A colored network is
 k-hop colorable if the shortest path between any pair of same-color nodes is
@@ -94,9 +97,20 @@ nodes on an individual basis instead of a single $k$ value for the whole
 network. We also study how this reflects on the resulting success probability
 for each iteration. We examine the idea that a pathway whose nodes are assigned
 different $k$ values should result in a higher success probability than if we
-only consider the minimum of these $k$ values for all nodes. We present a new
-method for detecting signaling pathways in protein interaction networks using an
-enhanced k-hop coloring technique based on these findings.
+only consider the minimum of these $k$ values for all nodes. Given different
+$k$ values for each node on a pathway, we show how to obtain a better bound on
+success probability.
+
+Based on these findings, We present a new method for detecting signaling
+pathways in protein interaction networks using an enhanced k-hop coloring
+technique. For a required optimal pathway of length $m$, we start by assigning
+one of $m$ colors to each node in the graph, then we extract the optimal
+colorful pathway. We then calculate our new bound on success probability. We
+repeat this process until the cumulative success probability is at least equal
+to a given confidence level. Although our theoretical findings are based on
+assuming the knowledge of the $k$ values assigned to the unknown global optimal
+pathway, we empirically show that the local optimal pathway extracted from the
+domain of colorful pathways actually fits the purpose.
 
 We provide validation experiments to test the biological significance of our
 results. We use \textit{weight p-value} and \textit{functional enrichment} as
@@ -112,6 +126,40 @@ of the paper.
 
 
 \section{Background}
+
+Steffan et al.\cite{steffan} studied detecting signaling pathways in protein
+interaction networks as guided by expression data. They listed all pathway
+candidates in a protein interaction network using exhaustive search. They
+scored each candidate based on how similar the expression profiles of its
+genes are. The drawback of this method is that exhaustive graph search is highly
+inefficient.
+
+Kelley et al.\cite{kelley} detected conserved signaling pathways between related
+organisms by performing global alignment between their protein interaction
+networks. They scored each pathway in terms of probability of true homology
+between aligned pair of proteins, as well as probability of true interactions
+between pairs of proteins along the pathway. This approach detects conserved
+pathways only and requires coupling between two datasets.
+
+Bebek et al.\cite{bebek} presented a method called PathFinder for finding new
+signaling pathways using association rules of known ones. They started with
+mining association rules for known pathways, guided by the knowledge of functional
+annotations of their proteins. They then performed an exhaustive search
+for candidate pathways. From these candidates, they selected the ones having at
+least a certain number of the known association rules and an average interaction
+weight above a given threshold. Again, the drawback of this method is that
+exhaustive graph search is generally inefficient.
+
+Gitter et al.\cite{gitter} presented a method for discovering signaling
+pathways by adding edge orientation to protein interaction networks. They
+selected an optimal orientation of all edges in the network that maximizes the
+weights of all satisfied length-bound paths. A path is satisfied if it follows
+the same direction along its edges from a source node to a destination node.
+They proved that this problem is NP-hard. They provided two approximation
+algorithms for it based on available solution methods for weighted Boolean
+satisfiability, and a third algorithm based on probabilistic selection. The
+drawback of these methods is that they do not scale well with increasing the
+number of source and destination nodes and the required path length.
 
 
 
