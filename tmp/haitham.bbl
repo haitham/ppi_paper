@@ -1,11 +1,9 @@
 \begin{thebibliography}{1}
 
 \bibitem{kelley}
-B.~P. Kelley, R.~Sharan, R.~M. Karp, E.~Sittler, D.~E. Root, B.~R. Stockwell,
-  and T.~Ideker, Conserved pathways within bacteria and yeast as revealed by
-  global protein network alignment, in {\em Proceedings of the National Academy
-  of Sciences of the United States of America, Vol. 100, No. 20\/}, September
-  1997.
+B.~P. Kelley, R.~Sharan, R.~M. Karp, T.~Sittler, D.~E. Root, B.~R. Stockwell
+  and T.~Ideker, {\em Proceedings of the National Academy of Sciences} {\bf
+  100}, 11394 (September 2003).
 
 \bibitem{scott}
 J.~Scott, T.~Ideker, R.~M. Karp and R.~Sharan, Efficient algorithms for
@@ -23,7 +21,15 @@ G.~G\"{u}lsoy, B.~Gandhi and T.~Kahveci, Topology aware coloring of gene
   Bioinformatics, Computational Biology and Biomedicine\/}, BCB '11 (ACM, New
   York, NY, USA, 2011).
 
-\bibitem{steffan}
+\bibitem{zhao}
+X.-M. Zhao, R.-S. Wang, L.~Chen and K.~Aihara, {\em Nucleic Acids Research}
+  {\bf 36}, p. e48  (2008).
+
+\bibitem{lu}
+S.~Lu, F.~Zhang, J.~Chen and S.-H. Sze, {\em Algorithmica} {\bf 48}, 363
+  (August 2007).
+
+\bibitem{steffen}
 M.~Steffen, A.~Petti, J.~Aach, P.~D'haeseleer and G.~Church, {\em BMC
   Bioinformatics} {\bf 3}, p.~34  (2002).
 

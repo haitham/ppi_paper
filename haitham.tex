@@ -127,28 +127,42 @@ of the paper.
 
 \section{Background}
 
-Steffan et al.\cite{steffan} studied detecting signaling pathways in protein
+Some different but closely related problems have been studied in the literature.
+Zhao et al.\cite{zhao} used integer linear programming to find signaling networks
+in protein interaction networks. They formulated the problem as a linear
+optimization problem of finding maximum weight subnetwork with a given size.
+This approach is concerned with finding signaling subnetworks in their general
+form rather than linear pathways. Kelley et al.\cite{kelley} detected conserved
+signaling pathways between related organisms by performing global alignment
+between their protein interaction networks. They scored each pathway in terms
+of probability of true homology between aligned pair of proteins, as well as
+probability of true interactions between pairs of proteins along the pathway.
+This approach detects conserved pathways only and requires coupling between two datasets.
+
+On the other hand, the problem we address has also been studied in the
+literature. Lu et al.\cite{lu} presented a divide-and-conquer algorithm for
+finding generic pathway structures in protein interaction networks. They
+recursively partitioned the network into two sets of vertices, enumerated
+substructures present in each set, and then built larger structures from them.
+They assumed that all edges have the same weight and scored the resulting
+pathway structures based on the biological function relatedness of their nodes
+to the given source and destination nodes. We are more interested in detecting
+pathways based on confidence in interactions rather than similarity of
+proteins.
+
+Steffen et al.\cite{steffen} studied detecting signaling pathways in protein
 interaction networks as guided by expression data. They listed all pathway
 candidates in a protein interaction network using exhaustive search. They
 scored each candidate based on how similar the expression profiles of its
-genes are. The drawback of this method is that exhaustive graph search is highly
-inefficient.
-
-Kelley et al.\cite{kelley} detected conserved signaling pathways between related
-organisms by performing global alignment between their protein interaction
-networks. They scored each pathway in terms of probability of true homology
-between aligned pair of proteins, as well as probability of true interactions
-between pairs of proteins along the pathway. This approach detects conserved
-pathways only and requires coupling between two datasets.
-
-Bebek et al.\cite{bebek} presented a method called PathFinder for finding new
-signaling pathways using association rules of known ones. They started with
-mining association rules for known pathways, guided by the knowledge of functional
-annotations of their proteins. They then performed an exhaustive search
-for candidate pathways. From these candidates, they selected the ones having at
-least a certain number of the known association rules and an average interaction
-weight above a given threshold. Again, the drawback of this method is that
-exhaustive graph search is generally inefficient.
+genes are. Bebek et al.\cite{bebek} presented a method called PathFinder for
+finding new signaling pathways using association rules of known ones. They
+started with mining association rules for known pathways, guided by the
+knowledge of functional annotations of their proteins. They then performed an
+exhaustive search for candidate pathways. From these candidates, they selected
+the ones having at least a certain number of the known association rules and an
+average interaction weight above a given threshold. The drawback of both of
+these methods is that the time complexity of exhaustive graph search is
+exponential in terms of the network size, and hence is very inefficient.
 
 Gitter et al.\cite{gitter} presented a method for discovering signaling
 pathways by adding edge orientation to protein interaction networks. They
@@ -157,11 +171,14 @@ weights of all satisfied length-bound paths. A path is satisfied if it follows
 the same direction along its edges from a source node to a destination node.
 They proved that this problem is NP-hard. They provided two approximation
 algorithms for it based on available solution methods for weighted Boolean
-satisfiability, and a third algorithm based on probabilistic selection. The
-drawback of these methods is that they do not scale well with increasing the
+satisfiability, and a third algorithm based on probabilistic selection. As
+shown in their results, these methods do not scale well with increasing the
 number of source and destination nodes and the required path length.
 
-
+The present work builds on the method presented by Scott et al.\cite{scott} for
+detecting signaling pathways in protein interaction networks using color coding.
+It also enhances the model presented by G{\"u}lsoy et al.\cite{gulsoy} for
+topology-aware color coding. We indroduced both methods in section 1.
 
 \section{Methods}
 

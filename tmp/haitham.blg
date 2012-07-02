@@ -3,11 +3,9 @@ The style file: ws-procs11x85.bst
 Database file #1: references.bib
 <ws-procs11x85.bst>
 World Scientific's Bibliography Style File for Proceedings
-You can't pop an empty literal stack for entry kelley
-while executing---line 1340 of file ws-procs11x85.bst
 You can't pop an empty literal stack for entry scott
 while executing---line 1340 of file ws-procs11x85.bst
 Warning--empty volume in alon
 You can't pop an empty literal stack for entry gulsoy
 while executing---line 1340 of file ws-procs11x85.bst
-(There were 3 error messages)
+(There were 2 error messages)
