@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{kelley}
 B.~P. Kelley, R.~Sharan, R.~M. Karp, T.~Sittler, D.~E. Root, B.~R. Stockwell
@@ -24,6 +24,10 @@ G.~G\"{u}lsoy, B.~Gandhi and T.~Kahveci, Topology aware coloring of gene
 \bibitem{zhao}
 X.-M. Zhao, R.-S. Wang, L.~Chen and K.~Aihara, {\em Nucleic Acids Research}
   {\bf 36}, p. e48  (2008).
+
+\bibitem{shlomi}
+T.~Shlomi, D.~Segal, E.~Ruppin and R.~Sharan, {\em BMC Bioinformatics} {\bf 7},
+  p. 199  (2006).
 
 \bibitem{lu}
 S.~Lu, F.~Zhang, J.~Chen and S.-H. Sze, {\em Algorithmica} {\bf 48}, 363

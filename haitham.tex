@@ -56,9 +56,10 @@ probability value $p(u, v)$ denoting interaction confidence for each $u, v \in
 V$. A set of undirected weighted edges $E$ can be obtained by adding an edge for
 each pair $(u, v)$ with $p(u, v) > 0$, and assigning it a weight $w(p, v) =
 -$log[$p(u, v)$]. Now consider the undirected weighted graph $G = (V, E, w)$
-representing the protein interaction network, and a set of start nodes $S \in
-V$. For each $v \in V$, we want to find a minimum-weight simple path of length
-$m$, starting at any node $s \in S$ and ending at $v$.
+representing the protein interaction network, a set of start nodes $S \subset
+V$ and a set of end nodes $T \subset V$. We want to find the minimum-weight
+simple path of length $m$, starting at any node $s \in S$ and ending at any
+node $t \in T$.
 
 Scott et al.\cite{scott} mentioned that the traveling-salesman problem is
 polynomial-time reducible to this problem; therefore it is NP-hard. They presented a method
@@ -137,7 +138,12 @@ signaling pathways between related organisms by performing global alignment
 between their protein interaction networks. They scored each pathway in terms
 of probability of true homology between aligned pair of proteins, as well as
 probability of true interactions between pairs of proteins along the pathway.
-This approach detects conserved pathways only and requires coupling between two datasets.
+This approach detects conserved pathways only and requires coupling between two
+datasets. Shlomi et al.\cite{shlomi} introduced QPath, a method for querying
+protein interaction networks for pathways using known homologous pathways as
+queries. They scored results based on their similarity to the query, number of
+insertions and deletions used, as well as the reliability of their interactions.
+This method only detects pathways that are similar to a given one.
 
 On the other hand, the problem we address has also been studied in the
 literature. Lu et al.\cite{lu} presented a divide-and-conquer algorithm for
