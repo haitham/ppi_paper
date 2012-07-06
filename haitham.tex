@@ -245,10 +245,10 @@ where $m!$ is the number of coloring possibilities in which the path is
 colorful, and $N_c$ denotes the total number of coloring possibilities for the
 path. Scott et al.\cite{scott} calculated $N_c$ as equal to $m^m$. This
 calculation considered no restrictions on the color selection of each node, and
-is discarding available knowledge of the network topology and colors already
+discarded available knowledge of the network topology and colors already
 assigned to its nodes.
 
-As guided by Gulsoy et al.\cite{gulsoy}, knowing the network topology can be
+As guided by G{\"u}lsoy et al.\cite{gulsoy}, knowing the network topology can be
 useful in calculating success probability, specifically the number of coloring
 possibilities of the optimal path. $\forall v \in V$, $\forall u \in k$
 neighborhood of $v$, if the color of $u$ is not equal to that of $v$, then the
@@ -269,10 +269,10 @@ also assume that each node in the path is not connected to any other nodes
 except the ones before and after it in the path. This assumption is valid
 because any more connections will only induce more coloring restrictions,
 causing $N_c$ to decrease; therefore we get a solid upper bound on $N_c$, hence
-a solid lower bound on $P_s$. For a given node $v$ in a given path, all
-$max\_k(v)$ nodes in either direction from $v$ are not allowed to have the same
+a solid lower bound on $P_s$ according to equation (\ref{eq1}). For a given node
+$v$ in a given path, all $max\_k(v)$ nodes in either direction from $v$ are not allowed to have the same
 color as $v$. We represent this rule as an unweighted constraint graph $W = (H,
-L)$ where $H$ is the set of nodes and $L$ is the set of edges. $H$ contains a
+L)$ where $H$ is its set of nodes and $L$ is its set of edges. $H$ contains a
 node corresponding to each node in the path, and $L$ contains an edge for each
 pair of nodes that are not allowed to have the same color, according to the
 aforementioned rule. Figure \ref{maxk} shows an example of a path, its $max\_k$
@@ -290,10 +290,21 @@ after removing the edge $uv$, and $W / uv$ is the graph $W$ after merging the
 nodes $u$ and $v$.
 
 \begin{figure}[h]
-\centerline{\psfig{file=maxk.eps,width=15cm}}
-\caption{ ... caption here ... }
+\centerline{\psfig{file=maxk.eps,width=16.5cm}}
+\caption{(a) An example 6-node path with its $max\_k$ configuration shown above
+it. Each $max\_k$ value translates to the number of nodes that have to be of
+different color on either direction. (b) The corresponding constraint graph $W$:
+each pair of adjacent nodes have to be of different color. Finding the value of
+the chromatic polynomial $P(W, m)$ yields the number of coloring possibilities
+for the path under the given constraints.}
 \label{maxk}
 \end{figure}
+
+According to this method, the value of $N_c$ for the example path shown in
+Figure \ref{maxk}(a) is 5,760, while Scott et al.\cite{scott} and G{\"u}lsoy et
+al.\cite{gulsoy} would respectively yield $N_c$ = 46,656 and 18,750 for the same
+example. Such a decrease in the value of $N_c$ leads to an increase in the value
+of $P_s$ according to equation (\ref{eq1}).
 
 \subsection{Method: Enhanced k-hop Coloring}
 Here we detail our method. We start by asserting that we have no knowledge about

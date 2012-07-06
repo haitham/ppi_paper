@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  5 JUL 2012 20:31
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  6 JUL 2012 10:23
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -260,12 +260,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5] [6] (./haitham.bbl) [7] (./haitham.aux) ) 
 Here is how much of TeX's memory you used:
- 2227 strings out of 493630
- 24906 string characters out of 3146714
- 84701 words of memory out of 3000000
- 5520 multiletter control sequences out of 15000+200000
+ 2226 strings out of 493630
+ 24901 string characters out of 3146714
+ 85701 words of memory out of 3000000
+ 5519 multiletter control sequences out of 15000+200000
  11042 words of font info for 42 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 34i,5n,30p,325b,230s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,6n,30p,540b,230s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on haitham.dvi (7 pages, 30868 bytes).
+Output written on haitham.dvi (7 pages, 32120 bytes).
