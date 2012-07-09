@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.6.5)  9 JUL 2012 12:50
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.6.5)  9 JUL 2012 12:48
 entering extended mode
-**haitham.tex
-(D:\Workspace\ppi_paper\haitham.tex
+**ws-procs11x85.tex
+(D:\Workspace\ppi_paper\ws-procs11x85.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -229,7 +229,7 @@ LaTeX Info: Redefining \cite on input line 149.
 LaTeX Info: Redefining \nocite on input line 214.
 Package: cite 2003/11/04  v 4.01
 LaTeX Info: Redefining \cite on input line 282.
-)) (D:\Workspace\ppi_paper\haitham.aux)
+)) (D:\Workspace\ppi_paper\ws-procs11x85.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
@@ -251,26 +251,34 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 7.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-Missing character: There is no ’ in font cmr12!
- [1
+) [1
 
 ] [2]
-[3] [4]
-File: maxk.eps Graphic file (type eps)
- <maxk.eps>
+[3] [4] [5] [6] [7] [8]
+File: procs-fig1.eps Graphic file (type eps)
+ <procs-fig1.eps>
+File: procs-fig2.eps Graphic file (type eps)
+ <procs-fig2.eps>
+Adding sideways figure on  right hand page Adding sideways figure on 
+right hand page [9] [10] [11] [12] [13]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 825.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6] (D:\Workspace\ppi_paper\haitham.bbl [7]) [8]
-(D:\Workspace\ppi_paper\haitham.aux) ) 
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 825.
+ [14]
+(D:\Workspace\ppi_paper\ws-procs11x85.bbl [15]) [16]
+(D:\Workspace\ppi_paper\ws-procs11x85.aux) ) 
 Here is how much of TeX's memory you used:
- 2233 strings out of 493924
- 25673 string characters out of 3144949
- 86663 words of memory out of 3000000
- 5511 multiletter control sequences out of 15000+200000
- 11042 words of font info for 42 fonts, out of 3000000 for 9000
+ 2311 strings out of 493924
+ 26708 string characters out of 3144949
+ 91669 words of memory out of 3000000
+ 5573 multiletter control sequences out of 15000+200000
+ 16497 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 34i,6n,30p,540b,230s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,14n,30p,331b,332s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on haitham.dvi (8 pages, 36236 bytes).
+Output written on ws-procs11x85.dvi (16 pages, 45860 bytes).

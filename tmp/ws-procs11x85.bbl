@@ -1,0 +1,82 @@
+\begin{thebibliography}{10}
+
+\bibitem{lamp94}
+L.~Lamport, {\em \LaTeX, A Document Preparation System}, 2nd edn.
+  (Addison-Wesley, Reading, MA, 1994).
+
+\bibitem{ams04}
+\AmS, {\em \AmS-\LaTeX{} Version 2 User's Guide} (American Mathematical
+  Society, Providence, 2004).
+\newblock \url{http://www.ams.org/tex/amslatex.html}.
+
+\bibitem{jarl88}
+C.~Jarlskog, {\em CP {V}iolation} (World Scientific, Singapore, 1988).
+
+\bibitem{best03}
+B.~W. Bestbury, {\em J. Phys. A} {\bf 36}, 1947  (2003).
+
+\bibitem{pier02}
+P.~X. Deligne and B.~H. Gross, {\em C. R. Math. Acad. Sci. Paris} {\bf 335},
+  877  (2002).
+
+\bibitem{jame02}
+J.~M. Landsberg and L.~Manivel, {\em Adv. Math.} {\bf 171}, 59  (2002),
+  \url{http://www.url.com/triality.html}.
+
+\bibitem{weis94}
+G.~H. Weiss (ed.), {\em Contemporary {P}roblems in {S}tatistical {P}hysics}
+  (SIAM, Philadelphia, 1994).
+
+\bibitem{gupt97}
+R.~K. Gupta and S.~D. Senturia, Pull-in time dynamics as a measure of absolute
+  pressure, in {\em Proc. {IEEE} Int. Workshop on Microelectromechanical
+  Systems ({MEMS}'97)\/},  (Nagoya, Japan, 1997).
+
+\bibitem{rich60}
+L.~F. Richardson, {\em Arms and {I}nsecurity} (Boxwood, Pittsburg, 1960).
+
+\bibitem{chur90}
+R.~V. Churchill and J.~W. Brown, {\em Complex {V}ariables and {A}pplications},
+  5th edn. (McGraw-Hill, 1990).
+
+\bibitem{benh93}
+F.~Benhamou and A.~Colmerauer (eds.), {\em Constraint {L}ogic {P}rogramming,
+  {S}elected {R}esearch} (MIT Press, 1993).
+
+\bibitem{bake72}
+D.~W. Baker and N.~L. Carter, {\em Seismic {V}elocity {A}nisotropy {C}alculated
+  for {U}ltramafic {M}inerals and {A}ggregates}, in {\em Flow and {F}racture of
+  {R}ocks\/},  eds. H.~C. Heard, I.~V. Borg, N.~L. Carter and C.~B. Raleigh,
+  Geophys. Mono., Vol.~16 (Am. Geophys. Union, 1972), pp. 157--166.
+
+\bibitem{hobb92}
+J.~D. Hobby, {\em {A User's Manual for MetaPost}}, Tech. Rep. 162, AT\&T Bell
+  Laboratories (Murray Hill, New Jersey, 1992).
+
+\bibitem{bria84}
+B.~W. Kernighan, {\em {PIC}---{A} Graphics Language for Typesetting}, Computing
+  Science Technical Report 116, AT\&T Bell Laboratories (Murray Hill, New
+  Jersey, 1984).
+
+\bibitem{hear94}
+H.~C. Heard, I.~V. Borg, N.~L. Carter and C.~B. Raleigh, {VoQS: Voice Quality
+  Symbols}, Revised to 1994,  (1994).
+
+\bibitem{brow88}
+M.~E. Brown, An interactive environment for literate programming, PhD thesis,
+  Texas A\&M University, (TX, USA, 1988), pp. ix + 102.
+
+\bibitem{lodh74}
+G.~S. Lodha, Quantitative interpretation of ariborne electromagnetic response
+  for a spherical model, Master's thesis, University of Toronto  (1974).
+
+\bibitem{dani73}
+D.~Jones, {The term `phoneme'}, in {\em Phonetics in Linguistics: A Book of
+  Reading\/},  eds. W.~E. Jones and J.~Laver (Longman, London, 1973) pp.
+  187--204.
+
+\bibitem{davi93}
+B.~Davidsen, Netpbm  (1993),
+  \url{ftp://ftp.wustl.edu/graphics/graphics/packages/NetPBM}.
+
+\end{thebibliography}

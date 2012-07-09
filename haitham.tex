@@ -239,7 +239,7 @@ Calculating success probability in general is a counting problem. The
 generic rule is:
 \begin{equation}
 P_s = \frac{m!}{N_c}
-\label{eq1}
+\label{eqgeneral}
 \end{equation} 
 where $m!$ is the number of coloring possibilities in which the path is
 colorful, and $N_c$ denotes the total number of coloring possibilities for the
@@ -256,7 +256,7 @@ number of coloring possibilities can be calculated as follows:
 \begin{equation}
 N_c \leq (m - k)^{m - k} \prod_{i=0}^{k-1} (m - i)  \leq  m^m
 \end{equation}
-which, according to equation (\ref{eq1}), results in a lower bound on success
+which, according to equation (\ref{eqgeneral}), results in a lower bound on success
 probability that is higher in value if $k > 0$. However, according to this
 scheme, the node with a minimum value of $max\_k$ dominates the whole network,
 which produces a correct but very conservative lower bound on success
@@ -269,7 +269,7 @@ also assume that each node in the path is not connected to any other nodes
 except the ones before and after it in the path. This assumption is valid
 because any more connections will only induce more coloring restrictions,
 causing $N_c$ to decrease; therefore we get a solid upper bound on $N_c$, hence
-a solid lower bound on $P_s$ according to equation (\ref{eq1}). For a given node
+a solid lower bound on $P_s$ according to equation (\ref{eqgeneral}). For a given node
 $v$ in a given path, all $max\_k(v)$ nodes in either direction from $v$ are not allowed to have the same
 color as $v$. We represent this rule as an unweighted constraint graph $W = (H,
 L)$ where $H$ is its set of nodes and $L$ is its set of edges. $H$ contains a
@@ -284,6 +284,7 @@ edge-contraction recursive rule based on the fundamental reduction
 theorem\cite{dong}:
 \begin{equation}
 P(W, m) = P(W - uv, m) - P(W / uv, m)
+\label{eqchromatic}
 \end{equation}
 where $u$ and $v$ are any pair of adjacent nodes, $W - uv$ is the graph $W$
 after removing the edge $uv$, and $W / uv$ is the graph $W$ after merging the
@@ -304,13 +305,43 @@ According to this method, the value of $N_c$ for the example path shown in
 Figure \ref{maxk}(a) is 5,760, while Scott et al.\cite{scott} and G{\"u}lsoy et
 al.\cite{gulsoy} would respectively yield $N_c$ = 46,656 and 18,750 for the same
 example. Such a decrease in the value of $N_c$ leads to an increase in the value
-of $P_s$ according to equation (\ref{eq1}).
+of $P_s$ according to equation (\ref{eqgeneral}).
 
 \subsection{Method: Enhanced k-hop Coloring}
-Here we detail our method. We start by asserting that we have no knowledge about
-the optimal path, but we use the local optimal as a replacement and
-experimentally test the correctness of this approach. Then we explain the
-algorithm in detail.
+The approach introduced in the previous section for calculating success
+probability assumes the knowledge of the $max\_k$ configuration of the optimal
+path. Needless to say, this is not the case. We present a conjecture that we
+can instead use the $max\_k$ configuration of the local colorful optimal path.
+We empirically show that this substitution serves the purpose. Our method reports
+the optimal colorful path in each iteration and computes $P_s$ based on its
+$max\_k$ configuration. We also keep a heap of the top 100 reported paths to
+cover the possibility of a pathway having a suboptimal score. The method is
+detailed as follows:
+\begin{arabiclist}[9]
+\item Initializations:
+	\begin{romanlist}[iii]
+	\item $M \Leftarrow \{1, 2, . . . , m\}$: the set of all m colors.
+	\item $P \Leftarrow 0$: overall success probability.
+	\item $H \Leftarrow \{\}$: heap of top 100 paths.
+	\end{romanlist}
+\item $\forall v \in V$, $c(v) \Leftarrow$ a color uniformly drawn from $M$.
+\item $\forall v \in V$, the minimum weight of a colorful path colored only
+using $M' \subseteq M$, starting within $S$ and ending at $v$, can be
+dynamically tabulated using the following recurrence\cite{scott}:
+\begin{equation}
+W(v, M') = \min_{u:c(u) \in (M' \backslash \{c(v)\})} W(u, M' \backslash
+\{c(v)\}) + w(u, v), |M'| > 1
+\end{equation}
+where $W(v, \{c(v)\}) = 0$ if $v \in S$ and $\infty$ otherwise.
+\item Report path $X$ whose weight $= \min_{v \in V} W(v, M)$.
+\item Add $X$ to $H$.
+\item Compute $N_c$ using the $max\_k$ configuration of $X$ according to the
+chromatic polynomial recurrence detailed in equation (\ref{eqchromatic}).
+\item Compute $P_s \Leftarrow m! / N_c$.
+\item Update $P \Leftarrow 1 - (1 - P)(1 - P_s)$.
+\item Repeat from step (2) until $P \geq \epsilon$.
+\end{arabiclist}
+
 
 \section{Experiments}
 
