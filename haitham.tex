@@ -29,67 +29,74 @@ Here should come the abstract.
 
 \section{Introduction} 
 
-Analysis of protein-protein interactions has a growing potential of
-providing a better understanding about collective protein function and cellular machinery.
-Such interactions can be modeled as a protein interaction network; that is a
-weighted graph where each node represents a protein and each edge represents an
-interaction between a pair of proteins, with a weight representing the level of
-confidence that this interaction truly exists. Such a structure allows easier
-extraction of hidden information due to the analogy with well-known graph
-problems.
+Studying interactions between proteins has been of utmost importance in
+understanding how proteins function collectively to govern cellular
+machinery\cite{schwikowski,uetz}. Such collection of interactions is modeled as
+a protein interaction network. Mathematically, a protein interaction network is
+often represented as an edge-weighted graph where each node denotes a protein
+and each edge represents an interaction between a pair of proteins. The weight
+of an edge denotes the level of confidence that this interaction truly exists.
 
-An important aspect of the analysis of protein interaction networks
-is detecting signaling pathways. A signaling pathway is a series of proteins in
-which each protein signals its successor to transmit some biological
-information through their interaction. Signaling pathways can be viewed as
-simple paths in protein interaction networks\cite{kelley}. 
+One of the key outcomes of computational analysis of protein interaction
+networks is identification of signaling pathways. A signaling pathway is a
+series of proteins in which each protein participates in transmitting
+biological information by modifying its successor through an
+interaction. Thus, signaling pathways can be viewed as simple paths in protein
+interaction networks\cite{kelley}.
 
-Given a confidence value for each interaction, we can assign an overall
-confidence value for the existence of a pathway simply by multiplying the
-confidence values of its constituting interactions. An optimal pathway is one
-with the highest confidence value. To work in an additive framework instead of
-the multiplicative one, edge weights can be assigned logarithmic values of the
-original interaction confidence.
+The confidence value of an interaction between two proteins is often considered
+as the probability that a signal is transmitted between those two proteins.
+Thus, the probability that a signal moves through a pathway is the product of
+the confidence values of its constituting interactions. Under this model, Scott
+et al. conjectured that a signal tends to move through the most probable
+pathway\cite{scott}. They showed that such pathways yield signaling pathways,
+and thus help in reconstructing signaling networks. Following defines the
+problem of identifying most probable pathways in a protein interaction network.
 
-\paragraph{Problem} Consider a set $V$ of nodes denoting proteins, and a
-probability value $p(u, v)$ denoting interaction confidence for each $u, v \in
-V$. A set of undirected weighted edges $E$ can be obtained by adding an edge for
-each pair $(u, v)$ with $p(u, v) > 0$, and assigning it a weight $w(p, v) =
--$log[$p(u, v)$]. Now consider the undirected weighted graph $G = (V, E, w)$
-representing the protein interaction network, a set of start nodes $S \subset
-V$ and a set of end nodes $T \subset V$. We want to find the minimum-weight
-simple path of length $m$, starting at any node $s \in S$ and ending at any
-node $t \in T$.
+\paragraph{Problem} Consider a protein interaction network $(V, E, p)$ where
+$V$ denotes the set of proteins, $E = \{(u, v)\} | u,v \in V$ denotes the set of
+interactions, and the function $p(): E \Rightarrow [0, 1]$  denotes interaction
+confidence for each interaction in E. Assume that we are given a set of starting
+proteins $S \subseteq V$ and a set of target proteins $T \subseteq V$. Given a
+path length denoted by a positive integer $m$, the problem is to find a simple
+path $P = v_1 \rightarrow v_2 \rightarrow \ldots \rightarrow v_m$, where
+$\prod_{i=1}^{m-1} p(v_i, v_{i+1})$ is maximum among all paths where $v_1 \in S$
+and $v_m \in T$.
 
-Scott et al.\cite{scott} mentioned that the traveling-salesman problem is
-polynomial-time reducible to this problem; therefore it is NP-hard. They presented a method
-for detecting pathways using a generic technique devised by Alon et
-al.\cite{alon} called \textit{color-coding}. The basic idea of this method is to randomly
-assign each node in the graph one of $m$ different colors, and search for an
-optimal pathway in the restricted domain of colorful pathways. A pathway is
-considered colorful if and only if all of its nodes are different in color from
-each other. This process is repeated for several iterations until reaching a
-given level of confidence that the unknown optimal pathway was among the
-colorful ones at some instance. This confidence level builds up with each
-iteration by calculating a probability value that an optimal path is indeed
-colorful in this iteration. This \textit{success probability} value depends
-solely on the pathway length $m$ and doesn’t capitalize on available
-information like the network topology and color assignment. As a result, the
-method provides a theoretically correct but very conservative success
-probability value, and hence loses a very good potential for decreasing the
-number of iterations needed to accomplish a given confidence level.
+The problem above is equivalent to finding a simple path $P = v_1 \rightarrow
+v_2 \rightarrow \ldots \rightarrow v_m$, where $\sum_{i=1}^{m-1} -$log $p(v_i,
+v_{i+1})$ is minimum among all paths where $v_1 \in S$ and $v_m \in T$. Scott et
+al.\cite{scott} mentioned that the traveling-salesman problem is polynomial-time
+reducible to this problem; therefore it is NP-hard. They developed a method
+using a technique devised by Alon et al.\cite{alon}, called
+\textit{color-coding}. The basic idea of this method is to randomly assign each
+node in the graph one of $m$ different colors, and search for an optimal
+pathway in the restricted domain of colorful pathways. A pathway is colorful if
+and only if all of its nodes are in different color. Finding a colorful path is
+computationally much cheaper than finding a path without assigning colors. The
+drawback is that the optimal path may not be colorful in a random color
+assignment. In this case, the color coding method fails to find the true result.
+To deal with this, color coding method repeats this process for several
+iterations until it reaches a given level of confidence that the unknown
+optimal pathway was among the colorful ones in at least one of these iterations.
+The confidence in the optimality of the result monotonically increases with each
+iteration. This confidence value depends solely on the pathway length $m$ and
+does not capitalize on readily available information such as the network
+topology and color assignment. As a result, the method provides a theoretically
+correct but very conservative confidence value. Hence it requires many
+iterations in order to achieve a given confidence level.
 
 G{\"u}lsoy et al.\cite{gulsoy} presented an enhanced color-coding technique
-called \textit{k-hop coloring}. In essence, k-hop coloring makes use of
-knowing the network topology and the node colors to assign the network a
-maximal value $k$ such that the network is k-hop colorable. A colored network is
+called \textit{k-hop coloring}. A colored network is
 k-hop colorable if the shortest path between any pair of same-color nodes is
-more than $k$ hops in length. This additional piece of information allows for
-higher success probability in each iteration, with a higher $k$ value resulting
-in a higher success probability. However, an obvious limitation is that the
-subnetworks with higher level of connectivity diminishe the $k$ value assigned
-to the whole network. For example, a network containing a clique of size $m$
-cannot be colored with ($m-1$)-hop coloring using $m$ colors\cite{gulsoy}.
+more than $k$ hops in length. This method exploits the network topology and
+the node colors to assign the network a maximal value $k$ such that the network
+is $k$-hop colorable. This additional piece of information allows for higher
+success probability at each iteration, yielding fewer iterations than that
+by Scott et al. However, subnetworks with high connectivity quickly diminishes
+the ability to $k$-hop color the whole network for large values of $k$. For
+example, a network containing a clique of size $m$ cannot be colored with
+($m-1$)-hop coloring using $m$ colors\cite{gulsoy}.
 
 \paragraph{Contribution} Our motivation comes from the need for a deeper
 understanding of the relation between network topology, random color assignment
