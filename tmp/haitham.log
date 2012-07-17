@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.6.5)  16 JUL 2012 18:47
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.6.5)  17 JUL 2012 15:54
 entering extended mode
 **haitham.tex
 (D:\Workspace\ppi_paper\haitham.tex
@@ -256,8 +256,8 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ] [2]
 [3] [4] [5]
 File: maxk.eps Graphic file (type eps)
- <maxk.eps> [6] [7] (D:\Workspace\ppi_paper\haitham.bbl) [8]
-(D:\Workspace\ppi_paper\haitham.aux) ) 
+ <maxk.eps> [6] [7] (D:\Workspace\ppi_paper\haitham.bbl [8])
+[9] (D:\Workspace\ppi_paper\haitham.aux) ) 
 Here is how much of TeX's memory you used:
  2235 strings out of 493924
  25692 string characters out of 3144949
@@ -265,6 +265,6 @@ Here is how much of TeX's memory you used:
  5513 multiletter control sequences out of 15000+200000
  11042 words of font info for 42 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 34i,6n,30p,540b,230s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,6n,30p,540b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on haitham.dvi (8 pages, 37648 bytes).
+Output written on haitham.dvi (9 pages, 40316 bytes).

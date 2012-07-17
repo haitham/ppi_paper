@@ -54,7 +54,7 @@ and thus help in reconstructing signaling networks. Following defines the
 problem of identifying most probable pathways in a protein interaction network.
 
 \paragraph{Problem} Consider a protein interaction network $(V, E, p)$ where
-$V$ denotes the set of proteins, $E = \{(u, v)\} | u,v \in V$ denotes the set of
+$V$ denotes the set of proteins, $E = \{(u, v) | u,v \in V\}$ denotes the set of
 interactions, and the function $p(): E \Rightarrow [0, 1]$  denotes interaction
 confidence for each interaction in E. Assume that we are given a set of starting
 proteins $S \subseteq V$ and a set of target proteins $T \subseteq V$. Given a
@@ -93,23 +93,28 @@ more than $k$ hops in length. This method exploits the network topology and
 the node colors to assign the network a maximal value $k$ such that the network
 is $k$-hop colorable. This additional piece of information allows for higher
 success probability at each iteration, yielding fewer iterations than that
-by Scott et al. However, subnetworks with high connectivity quickly diminishes
+by Scott et al. However, subnetworks with high connectivity quickly diminish
 the ability to $k$-hop color the whole network for large values of $k$. For
 example, a network containing a clique of size $m$ cannot be colored with
 ($m-1$)-hop coloring using $m$ colors\cite{gulsoy}.
 
-\paragraph{Contribution} Our motivation comes from the need for a deeper
-understanding of the relation between network topology, random color assignment
-and success probability. We study the possibility of assigning $k$ values to
-nodes on an individual basis instead of a single $k$ value for the whole
-network. We also study how this reflects on the resulting success probability
-for each iteration. We examine the idea that a pathway whose nodes are assigned
+\paragraph{Contribution} In this paper, we consider the problem of finding
+signaling pathways in protein interaction networks. We develop a new coloring
+method that overcomes the bottlenecks of exisiting coloring methods by Scott et
+al.\cite{scott} and G{\"u}lsoy et al\cite{gulsoy}. Our contribution comes from a
+deeper understanding of the relation between network topology, random color
+assignment and confidence value. We assign a $k$ value to each node
+individually by studying the colors of all the nodes in the network. The $k$
+value of a node $v$ at an iteration indicates that there is no other node $u$
+that is reachable from $v$ in $k$ hops such that both $u$ and $v$ have the same
+color. For each node, the $k$ value is the largest integer that satisfies the
+above constraint. Thus, different nodes in the network may have different $k$
+values. We also study how this reflects on the resulting success probability for
+each iteration. We examine the idea that a pathway whose nodes are assigned
 different $k$ values should result in a higher success probability than if we
 only consider the minimum of these $k$ values for all nodes. Given different
 $k$ values for each node on a pathway, we show how to obtain a better bound on
 success probability.
-
-
 
 Based on these findings, We present a new method for detecting signaling
 pathways in protein interaction networks using an enhanced k-hop coloring
@@ -121,6 +126,14 @@ to a given confidence level. Although our theoretical findings are based on
 assuming the knowledge of the $k$ values assigned to the unknown global optimal
 pathway, we empirically show that the local optimal pathway extracted from the
 domain of colorful pathways actually fits the purpose.
+
+The coloring methods developed by G{\"u}lsoy et al.\cite{gulsoy} and Scott et
+al.\cite{scott} yield special cases of our method. The first method is our
+method in the special case of all the nodes in the network having the same $k$
+value. The second method is our method in the special case of all the nodes in
+the network having $k$ value $= 0$. Hence, our method is guaranteed to perform
+at least as good as both of them in these special cases, and better in the
+general case.
 
 We provide validation experiments to test the biological significance of our
 results. We use \textit{weight p-value} and \textit{functional enrichment} as
@@ -137,33 +150,33 @@ of the paper.
 
 \section{Background}
 
-Some different but closely related problems have been studied in the literature.
-Zhao et al.\cite{zhao} used integer linear programming to find signaling networks
-in protein interaction networks. They formulated the problem as a linear
-optimization problem of finding maximum weight subnetwork with a given size.
-This approach is concerned with finding signaling subnetworks in their general
-form rather than linear pathways. Kelley et al.\cite{kelley} detected conserved
-signaling pathways between related organisms by performing global alignment
-between their protein interaction networks. They scored each pathway in terms
-of probability of true homology between aligned pair of proteins, as well as
-probability of true interactions between pairs of proteins along the pathway.
-This approach detects conserved pathways only and requires coupling between two
-datasets. Shlomi et al.\cite{shlomi} introduced QPath, a method for querying
-protein interaction networks for pathways using known homologous pathways as
-queries. They scored results based on their similarity to the query, number of
-insertions and deletions used, as well as the reliability of their interactions.
-This method only detects pathways that are similar to a given one.
+A number of methods have been developed so far to identify signaling networks
+from protein interaction networks. These methods differ in the way they
+formulate the problem. Among them, Zhao et al.\cite{zhao} formulated a linear
+optimization problem that finds the maximum weighted subnetwork with a given
+size. The main difference of this approach is that it is concerned with finding
+signaling subnetworks rather than linear pathways. Kelley et al.\cite{kelley}
+detected conserved signaling pathways between related organisms by performing
+global alignment between their protein interaction networks. They scored each
+pathway in terms of probability of true homology between aligned pair of
+proteins, as well as probability of true interactions between pairs of proteins
+along the pathway. Shlomi et al.\cite{shlomi} introduced QPath, a method for
+querying protein interaction networks for pathways using known homologous
+pathways as queries. They scored results based on their similarity to the
+query, number of insertions and deletions used, as well as the reliability of
+their interactions. Both Kelley et al.\cite{kelley} and Shlomi et
+al.\cite{shlomi} are comparative methods. They require knowledge of multiple
+interaction networks. Thus, they solve a different computational problem than
+the one considered in this paper.
 
-On the other hand, the problem we address has also been studied in the
-literature. Lu et al.\cite{lu} presented a divide-and-conquer algorithm for
-finding generic pathway structures in protein interaction networks. They
-recursively partitioned the network into two sets of vertices, enumerated
-substructures present in each set, and then built larger structures from them.
-They assumed that all edges have the same weight and scored the resulting
-pathway structures based on the biological function relatedness of their nodes
-to the given source and destination nodes. We are more interested in detecting
-pathways based on confidence in interactions rather than similarity of
-proteins.
+Lu et al.\cite{lu} presented a divide-and-conquer algorithm to find signaling
+subnetworks in protein interaction networks. They recursively partitioned the
+network into two sets of vertices, enumerated substructures present in each
+set, and then built larger subnetworks from them. They assumed that all edges
+have the same weight. They scored the resulting subnetworks based on the
+similarity of expression profiles of their nodes to the given source and
+destination nodes. This method formulates a different objective: detecting
+paths whose proteins are highest in expression similarity.
 
 Steffen et al.\cite{steffen} studied detecting signaling pathways in protein
 interaction networks as guided by expression data. They listed all pathway
@@ -190,10 +203,23 @@ satisfiability, and a third algorithm based on probabilistic selection. As
 shown in their results, these methods do not scale well with increasing the
 number of source and destination nodes and the required path length.
 
-The present work builds on the method presented by Scott et al.\cite{scott} for
-detecting signaling pathways in protein interaction networks using color coding.
-It also enhances the model presented by G{\"u}lsoy et al.\cite{gulsoy} for
-topology-aware color coding. We indroduced both methods in section 1.
+The closest studies to that presented in this paper are those by Scott et
+al.\cite{scott} and G{\"u}lsoy et al\cite{gulsoy}. The former detected signaling
+pathways in protein interaction networks using color coding. The latter
+developed topology-aware color coding for network alignment. We describe both
+methods in detail in section 1. Both methods run $r$ coloring iterations such
+that $1 - (1 - P_s)^r \geq \epsilon$ where $P_s$ is the success probability per
+iteration and $\epsilon$ is the required confidence level. Both methods
+calculate success probability as follow:
+\begin{equation}
+P_s = \frac{m!}{N_c}
+\end{equation}
+where $N_c$ is the number of coloring assignments possible for the optimal
+pathway. Scott et al.\cite{scott} calculated $N_c = m^m$. G{\"u}lsoy et
+al.\cite{gulsoy} calculated $N_c \leq (m - k)^{m - k} \prod_{i=0}^{k-1} (m -
+i)$ where $k$ is the value assigned to the network such that it is $k$-hop
+colorable. The present work develops a better upper bound on $N_c$, hence a
+better lower bound on $P_s$.
 
 \section{Methods}
 
