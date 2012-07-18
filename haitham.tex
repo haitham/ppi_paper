@@ -28,14 +28,16 @@ Here should come the abstract.
 \bodymatter
 
 \section{Introduction} 
+\label{introduction}
 
 Studying interactions between proteins has been of utmost importance in
-understanding how proteins function collectively to govern cellular
-machinery\cite{schwikowski,uetz}. Such collection of interactions is modeled as
-a protein interaction network. Mathematically, a protein interaction network is
-often represented as an edge-weighted graph where each node denotes a protein
-and each edge represents an interaction between a pair of proteins. The weight
-of an edge denotes the level of confidence that this interaction truly exists.
+understanding how proteins work collectively to govern cellular
+function\cite{schwikowski,uetz}. Such collection of interactions among
+proteins is called a protein interaction network. Mathematically, a protein
+interaction network is often modeled as an edge-weighted undirected graph where
+each node denotes a protein and each edge represents an interaction between a
+pair of proteins. The weight of an edge denotes the level of confidence that
+this interaction truly exists.
 
 One of the key outcomes of computational analysis of protein interaction
 networks is identification of signaling pathways. A signaling pathway is a
@@ -51,52 +53,55 @@ the confidence values of its constituting interactions. Under this model, Scott
 et al. conjectured that a signal tends to move through the most probable
 pathway\cite{scott}. They showed that such pathways yield signaling pathways,
 and thus help in reconstructing signaling networks. Following defines the
-problem of identifying most probable pathways in a protein interaction network.
+problem of identifying the most probable pathway in a protein interaction
+network.
 
-\paragraph{Problem} Consider a protein interaction network $(V, E, p)$ where
+\paragraph{Problem} Consider a protein interaction network $(V, E, \lambda)$ where
 $V$ denotes the set of proteins, $E = \{(u, v) | u,v \in V\}$ denotes the set of
-interactions, and the function $p(): E \Rightarrow [0, 1]$  denotes interaction
+interactions, and the function $\lambda(): E \Rightarrow [0, 1]$  denotes interaction
 confidence for each interaction in E. Assume that we are given a set of starting
 proteins $S \subseteq V$ and a set of target proteins $T \subseteq V$. Given a
 path length denoted by a positive integer $m$, the problem is to find a simple
-path $P = v_1 \rightarrow v_2 \rightarrow \ldots \rightarrow v_m$, where
-$\prod_{i=1}^{m-1} p(v_i, v_{i+1})$ is maximum among all paths where $v_1 \in S$
-and $v_m \in T$.
+path $\Phi = v_1 \rightarrow v_2 \rightarrow \ldots \rightarrow v_m$, where
+$\prod_{i=1}^{m-1} \lambda(v_i, v_{i+1})$ is maximum among all paths with $v_1 \in
+S$, $v_m \in T$ and $v_i \in V \forall i \in \{1, 2, \ldots , m\}$.
 
-The problem above is equivalent to finding a simple path $P = v_1 \rightarrow
-v_2 \rightarrow \ldots \rightarrow v_m$, where $\sum_{i=1}^{m-1} -$log $p(v_i,
-v_{i+1})$ is minimum among all paths where $v_1 \in S$ and $v_m \in T$. Scott et
-al.\cite{scott} mentioned that the traveling-salesman problem is polynomial-time
-reducible to this problem; therefore it is NP-hard. They developed a method
-using a technique devised by Alon et al.\cite{alon}, called
-\textit{color-coding}. The basic idea of this method is to randomly assign each
-node in the graph one of $m$ different colors, and search for an optimal
-pathway in the restricted domain of colorful pathways. A pathway is colorful if
-and only if all of its nodes are in different color. Finding a colorful path is
-computationally much cheaper than finding a path without assigning colors. The
-drawback is that the optimal path may not be colorful in a random color
-assignment. In this case, the color coding method fails to find the true result.
-To deal with this, color coding method repeats this process for several
-iterations until it reaches a given level of confidence that the unknown
-optimal pathway was among the colorful ones in at least one of these iterations.
+The problem above is equivalent to finding a simple path $\phi = v_1 \rightarrow
+v_2 \rightarrow \ldots \rightarrow v_m$, where $\sum_{i=1}^{m-1} -$log
+$\lambda(v_i, v_{i+1})$ is minimum among all paths with $v_1 \in
+S$, $v_m \in T$ and $v_i \in V \forall i \in \{1, 2, \ldots , m\}$. The
+traveling-salesman problem is polynomial-time reducible to this
+problem\cite{scott}; therefore it is NP-hard. They developed a method using a
+technique devised by Alon et al.\cite{alon}, called \textit{color-coding}. The
+basic idea of this method is to randomly assign each node in the graph one of
+$m$ different colors, and search for an optimal pathway in the restricted
+domain of colorful pathways. A pathway is colorful if and only if all of its
+nodes are in different color. Finding a colorful path is computationally much
+cheaper than finding a path without assigning colors. The drawback is that the
+optimal path may not be colorful in a random color assignment. If that happens,
+the color coding method fails to find the true optimal result. To deal with
+this, color coding method repeats the coloring process for several iterations.
 The confidence in the optimality of the result monotonically increases with each
-iteration. This confidence value depends solely on the pathway length $m$ and
-does not capitalize on readily available information such as the network
-topology and color assignment. As a result, the method provides a theoretically
-correct but very conservative confidence value. Hence it requires many
-iterations in order to achieve a given confidence level.
+iteration until it reaches a given level of confidence that the unknown optimal
+pathway was among the colorful ones in at least one of these iterations. As we
+elaborate later in section \ref{background}, the confidence value depends
+solely on the pathway length $m$ and does not capitalize on readily available
+information such as the network topology and color assignment. As a result, the
+method provides a theoretically correct but very conservative confidence value.
+Hence it requires many iterations in order to achieve a given confidence level,
+leading to an unnecessarily innefficient running time performance.
 
 G{\"u}lsoy et al.\cite{gulsoy} presented an enhanced color-coding technique
-called \textit{k-hop coloring}. A colored network is
-k-hop colorable if the shortest path between any pair of same-color nodes is
-more than $k$ hops in length. This method exploits the network topology and
-the node colors to assign the network a maximal value $k$ such that the network
-is $k$-hop colorable. This additional piece of information allows for higher
-success probability at each iteration, yielding fewer iterations than that
-by Scott et al. However, subnetworks with high connectivity quickly diminish
-the ability to $k$-hop color the whole network for large values of $k$. For
-example, a network containing a clique of size $m$ cannot be colored with
-($m-1$)-hop coloring using $m$ colors\cite{gulsoy}.
+called \textit{k-hop coloring}. A colored network is k-hop colorable if the
+shortest path between all pairs of same-color nodes is more than $k$ hops in
+length. This method exploits the network topology and the node colors to assign
+the network a maximal value $k$ such that the network is $k$-hop colorable.
+This additional piece of information allows for higher success probability at
+each iteration, yielding fewer iterations than that by Scott et al. However,
+subnetworks with high connectivity quickly diminish the ability to $k$-hop
+color the whole network for large values of $k$. For example, a network
+containing a clique of size $m$ cannot be colored with ($m-1$)-hop coloring
+using $m$ colors\cite{gulsoy}.
 
 \paragraph{Contribution} In this paper, we consider the problem of finding
 signaling pathways in protein interaction networks. We develop a new coloring
@@ -110,22 +115,20 @@ that is reachable from $v$ in $k$ hops such that both $u$ and $v$ have the same
 color. For each node, the $k$ value is the largest integer that satisfies the
 above constraint. Thus, different nodes in the network may have different $k$
 values. We also study how this reflects on the resulting success probability for
-each iteration. We examine the idea that a pathway whose nodes are assigned
-different $k$ values should result in a higher success probability than if we
-only consider the minimum of these $k$ values for all nodes. Given different
-$k$ values for each node on a pathway, we show how to obtain a better bound on
-success probability.
+each iteration. Given different $k$ values for each node on a pathway, we show
+how to obtain a bound on success probability.
 
 Based on these findings, We present a new method for detecting signaling
 pathways in protein interaction networks using an enhanced k-hop coloring
-technique. For a required optimal pathway of length $m$, we start by assigning
-one of $m$ colors to each node in the graph, then we extract the optimal
-colorful pathway. We then calculate our new bound on success probability. We
-repeat this process until the cumulative success probability is at least equal
-to a given confidence level. Although our theoretical findings are based on
-assuming the knowledge of the $k$ values assigned to the unknown global optimal
-pathway, we empirically show that the local optimal pathway extracted from the
-domain of colorful pathways actually fits the purpose.
+technique. Given the parameter pathway length $m$, we start by randomly
+assigning one of $m$ colors to each node in the graph, we then extract the
+optimal colorful pathway. We then calculate our new bound on success
+probability. We repeat this process until the cumulative success probability is
+at least equal to a given confidence level. Although our theoretical findings
+are based on assuming the knowledge of the $k$ values assigned to the unknown
+global optimal pathway, we empirically demonstrate that the local optimal
+pathway extracted from the domain of colorful pathways yields correct
+confidence values.
 
 The coloring methods developed by G{\"u}lsoy et al.\cite{gulsoy} and Scott et
 al.\cite{scott} yield special cases of our method. The first method is our
@@ -149,25 +152,27 @@ of the paper.
 
 
 \section{Background}
+\label{background}
 
 A number of methods have been developed so far to identify signaling networks
 from protein interaction networks. These methods differ in the way they
 formulate the problem. Among them, Zhao et al.\cite{zhao} formulated a linear
 optimization problem that finds the maximum weighted subnetwork with a given
-size. The main difference of this approach is that it is concerned with finding
-signaling subnetworks rather than linear pathways. Kelley et al.\cite{kelley}
-detected conserved signaling pathways between related organisms by performing
-global alignment between their protein interaction networks. They scored each
-pathway in terms of probability of true homology between aligned pair of
-proteins, as well as probability of true interactions between pairs of proteins
-along the pathway. Shlomi et al.\cite{shlomi} introduced QPath, a method for
-querying protein interaction networks for pathways using known homologous
-pathways as queries. They scored results based on their similarity to the
-query, number of insertions and deletions used, as well as the reliability of
-their interactions. Both Kelley et al.\cite{kelley} and Shlomi et
-al.\cite{shlomi} are comparative methods. They require knowledge of multiple
-interaction networks. Thus, they solve a different computational problem than
-the one considered in this paper.
+size. The main difference of this approach from this paper is that it is
+concerned with finding signaling subnetworks rather than linear pathways.
+Kelley et al.\cite{kelley} detected conserved signaling pathways between
+related organisms by performing global alignment between their protein
+interaction networks. They scored each pathway in terms of the probability of
+true homology between aligned pair of proteins, as well as the probability of
+true interactions between pairs of proteins along the pathway. Shlomi et
+al.\cite{shlomi} introduced QPath, a method for querying protein interaction
+networks for pathways using known homologous pathways as queries. They scored
+results based on their similarity to the query, number of insertions and
+deletions used, as well as the reliability of their interactions. Both Kelley
+et al.\cite{kelley} and Shlomi et al.\cite{shlomi} are comparative methods.
+They require knowledge of multiple interaction networks. Thus, they solve a
+related, yet different, computational problem than the one considered in this
+paper.
 
 Lu et al.\cite{lu} presented a divide-and-conquer algorithm to find signaling
 subnetworks in protein interaction networks. They recursively partitioned the
@@ -175,8 +180,9 @@ network into two sets of vertices, enumerated substructures present in each
 set, and then built larger subnetworks from them. They assumed that all edges
 have the same weight. They scored the resulting subnetworks based on the
 similarity of expression profiles of their nodes to the given source and
-destination nodes. This method formulates a different objective: detecting
-paths whose proteins are highest in expression similarity.
+destination nodes. This method formulates a different objective. It aims to
+detect paths whose proteins are highest in expression similarity, and thus it
+does not utilize the confidence in the interactions.
 
 Steffen et al.\cite{steffen} studied detecting signaling pathways in protein
 interaction networks as guided by expression data. They listed all pathway
@@ -195,8 +201,8 @@ exponential in terms of the network size, and hence is very inefficient.
 Gitter et al.\cite{gitter} presented a method for discovering signaling
 pathways by adding edge orientation to protein interaction networks. They
 selected an optimal orientation of all edges in the network that maximizes the
-weights of all satisfied length-bound paths. A path is satisfied if it follows
-the same direction along its edges from a source node to a destination node.
+weights of all satisfied length-bound paths. They say a path is satisfied if it
+follows the same direction along its edges from a source node to a destination node.
 They proved that this problem is NP-hard. They provided two approximation
 algorithms for it based on available solution methods for weighted Boolean
 satisfiability, and a third algorithm based on probabilistic selection. As
@@ -207,22 +213,29 @@ The closest studies to that presented in this paper are those by Scott et
 al.\cite{scott} and G{\"u}lsoy et al\cite{gulsoy}. The former detected signaling
 pathways in protein interaction networks using color coding. The latter
 developed topology-aware color coding for network alignment. We describe both
-methods in detail in section 1. Both methods run $r$ coloring iterations such
-that $1 - (1 - P_s)^r \geq \epsilon$ where $P_s$ is the success probability per
-iteration and $\epsilon$ is the required confidence level. Both methods
-calculate success probability as follow:
+methods in detail in section \ref{introduction}. Both methods run multiple 
+coloring iterations. Let us denote the probability that the coloring at an
+iteration is successful (i.e. true optimal path is colorful) with $P_s$. The
+probability that at least one out of $r$ iterations is successful is $1 - (1 -
+P_s)^r$. Following from this, in order to insure confidence of at least
+$\epsilon$ ($0 \leq \epsilon \leq 1$), they run $r$ iterations, such that $1 -
+(1 - P_s)^r \geq \epsilon$. Both methods calculate success probability as
 \begin{equation}
 P_s = \frac{m!}{N_c}
+\label{ps}
 \end{equation}
 where $N_c$ is the number of coloring assignments possible for the optimal
-pathway. Scott et al.\cite{scott} calculated $N_c = m^m$. G{\"u}lsoy et
-al.\cite{gulsoy} calculated $N_c \leq (m - k)^{m - k} \prod_{i=0}^{k-1} (m -
-i)$ where $k$ is the value assigned to the network such that it is $k$-hop
-colorable. The present work develops a better upper bound on $N_c$, hence a
-better lower bound on $P_s$.
+pathway. They differ in the way they compute $N_c$. Scott et al.\cite{scott}
+calculated $N_c = m^m$. G{\"u}lsoy et al.\cite{gulsoy} calculated a bound $N_c
+\leq (m - k)^{m - k} \prod_{i=0}^{k-1} (m - i)$ where $k$ is the value assigned
+to the network such that it is $k$-hop colorable. Notice that in equation
+\ref{ps}, smaller values for $N_c$ are desirable. This is because small values
+for $N_c$ increase success probability, and thus reduces the number of
+iterations needed to attain a given confidence level $\epsilon$. This paper
+develops a novel method that computes a much smaller upper bound on $N_c$ than
+both Scott et al. and G{\"u}lsoy et al., hence a better lower bound on $P_s$.
 
 \section{Methods}
-
 In this section, we start by properly formulating the problem and defining
 common terms that we use in our methods. We then present new thoughts about
 pathway detection using color coding. We study the opportunity of more involving
@@ -231,69 +244,58 @@ and hence needing less number of iterations and improving performance. Last, we
 present an enhanced color-coding method for detecting pathways in protein
 interaction networks.
 
-\subsection{Problem Formulation and Term Definition}
-Given a graph $G = (V, E, w)$, where $V$ is its set of nodes, $E$ is its set of
-edges and $w$ is the edge-weight function, and given a set $S \subset V$ and a
-path length $m$. Assume $P(i)$ is the set of all simple paths of length $m$
-starting at any node $s \in S$ and ending at node $i$. Our goal is to find, for
-each node $i$, the path $p \in P(i)$ whose sum of edge weights is minimum.
+\subsection{Success Probability: a Tighter Bound}
+Our key contribution is to establish the relationship among network topology,
+node colors and sucess probability in a single iteration of color coding. In
+this section, we focus on one coloring iteration and describe how we compute the
+probability of success in that iteration.
 
-The following are the definition of some commonly used terms:
+Assume that we are given a protein interaction network similar to the one
+described in section \ref{introduction}, denoted by $G = (V, E, w)$, where
+$w(u, v) = -$log $\lambda(u, v)$. Also assume that the colors of the nodes are
+already assigned in the current iteration. We denote the set of possible colors
+with $\{c_1, c_2, \ldots , c_m\}$ and denote the color of node $v \in V$ with
+$c(v)$.
+
+Consider any colorful path with $m$ nodes. The number of ways to assign colors
+to the nodes of that path while keeping it colorful is $m!$. Notice that this is
+equal to the numerator in equation \ref{ps} for probability of success. The
+denominator in that equation, denoted by $N_c$, is the total number of ways to
+color that path regardless of whether it yields colorful or not. Before we
+discuss how we compute $N_c$, we describe the following concepts.
+
 \begin{arabiclist}[3]
-\item {\scshape k neighborhood}: for a given node $v \in V$ and an integer $k$,
-the $k$ neighborhood of $v$ is a set of nodes  $U \subset V$ where a node $u \in
-U$ if and only if $u$ can be reached from $v$ in $k$ hops or less.
-\item {\scshape max\_k}: for a given node $v \in V$, $max\_k(v)$ is the maximal
-value of $k$ such that $\forall u \in k$ neighborhood of $v$, the color assigned
-to $u$ is not equal to the color assigned to $v$.
-\item {\scshape max\_k configuration}: for a given path $P$, the $max\_k$
-configuration of $P$ is the sequence of $max\_k$ values corresponding to the
-sequence of nodes in $P$.
+\item $k$ neighborhood of a node. Let $v \in V$ be a node in $G$, and $k$ be a
+natural number. $\Psi_k(v)$ is the set of nodes where $\forall u \in V
+\backslash \{v\}$, $u \in \Psi_k(v)$ if and only if $u$ is reachable from $v$
+in $k$ hops of less. We call $\Psi_k(v)$ the $k$ neighborhood of $v$. Figure
+\ref{colors} shows an example of a colored network. In this example, $\Psi_1(a)
+= \{d\}$ because the node $d$ is the only node that is reachable from the
+node $a$ in 1 hop (or less). Similarly, $\Psi_1(f) = \{c, e\}$, $\Psi_2(a) =
+\{d, e\}$ and $\Psi_2(f) = \{c, e, b, d\}$.
+\item $k_{max}$ value of a node. Let $v \in V$ be a node in $G$. $k_{max}(v)$ is
+the maximal value of $k$ such that $\forall u \in \Psi_k(v)$: $c(u) \neq c(v)$.
+Figure \ref{colors} also shows the $k_{max}$ values for the nodes in the
+network. For example, $\forall u \in \Psi_1(f) = \{c, e\}$, $c(u) \neq
+c(f)$. If we try to expand to $\Psi_2(f) = \{c, e, b, d\}$, we find that $c(d)
+= c(f) = c_2$. Therefore $k_{max}(f) = 1$. Similarly, $k_{max}(a) = 3$ and
+$k_{max}(b) = 0$.
+\item $k_{max}$
+configuration of a path. Let $\Phi = v_1 \rightarrow v_2 \rightarrow \ldots \rightarrow v_m$ be a path of length $m$ in $G$. The
+$k_{max}$ configuration of $\Phi$ is the sequence $[k_{max}(v_1),
+k_{max}(v_2), \ldots , k_{max}(v_m)]$.
 \end{arabiclist}
 
-\subsection{Success Probability: a Tighter Bound}
 
-Based on the work presented by Scott et al.\cite{scott}, a generic color-coding
-approach to solving the problem consists of three main steps. The first step is
-coloring the network; $\forall v \in V$ we independently select a color drawn
-uniformly at random from a set of $m$ different colors. The second step is
-finding an optimal colorful path; $\forall v \in V$ we want to find the
-minimum-weight colorful path of length $m$ starting in $S$ and ending at $v$,
-and then we extract the minimum of these paths. The third step is calculating
-the success probability $P_s$; we calculate a lower bound on the probability
-that the unknown overall optimal path is indeed colorful, hence the probability
-that it is indeed the optimal colorful one we found. These three steps are
-repeated $r$ times until $1 - \prod_{i=1}^r [1 - P_s(i)] \geq \epsilon$, where
-$\epsilon$ is a required confidence level. It is obvious that a higher success
-probability would result in less number of iterations required, hence less
-execution time.
+\begin{figure}[h]
+\centerline{\psfig{file=colors.eps,width=9cm,height=6cm}}
+\caption{(a) An example colored network. Each node carries two labels. The
+label on the left is the color assigned to this node. The label on the right is
+the node's $k_{max}$ value}
+\label{colors}
+\end{figure}
 
-Calculating success probability in general is a counting problem. The
-generic rule is:
-\begin{equation}
-P_s = \frac{m!}{N_c}
-\label{eqgeneral}
-\end{equation} 
-where $m!$ is the number of coloring possibilities in which the path is
-colorful, and $N_c$ denotes the total number of coloring possibilities for the
-path. Scott et al.\cite{scott} calculated $N_c$ as equal to $m^m$. This
-calculation considered no restrictions on the color selection of each node, and
-discarded available knowledge of the network topology and colors already
-assigned to its nodes.
 
-As guided by G{\"u}lsoy et al.\cite{gulsoy}, knowing the network topology can be
-useful in calculating success probability, specifically the number of coloring
-possibilities of the optimal path. $\forall v \in V$, $\forall u \in k$
-neighborhood of $v$, if the color of $u$ is not equal to that of $v$, then the
-number of coloring possibilities can be calculated as follows:
-\begin{equation}
-N_c \leq (m - k)^{m - k} \prod_{i=0}^{k-1} (m - i)  \leq  m^m
-\end{equation}
-which, according to equation (\ref{eqgeneral}), results in a lower bound on success
-probability that is higher in value if $k > 0$. However, according to this
-scheme, the node with a minimum value of $max\_k$ dominates the whole network,
-which produces a correct but very conservative lower bound on success
-probability.
 
 Our approach relies on individual $max\_k$ values of all nodes in an optimal
 path. Assuming knowledge of the $max\_k$ configuration of the optimal path, we
@@ -302,7 +304,7 @@ also assume that each node in the path is not connected to any other nodes
 except the ones before and after it in the path. This assumption is valid
 because any more connections will only induce more coloring restrictions,
 causing $N_c$ to decrease; therefore we get a solid upper bound on $N_c$, hence
-a solid lower bound on $P_s$ according to equation (\ref{eqgeneral}). For a given node
+a solid lower bound on $P_s$ according to equation (\ref{ps}). For a given node
 $v$ in a given path, all $max\_k(v)$ nodes in either direction from $v$ are not allowed to have the same
 color as $v$. We represent this rule as an unweighted constraint graph $W = (H,
 L)$ where $H$ is its set of nodes and $L$ is its set of edges. $H$ contains a
@@ -338,7 +340,7 @@ According to this method, the value of $N_c$ for the example path shown in
 Figure \ref{maxk}(a) is 5,760, while Scott et al.\cite{scott} and G{\"u}lsoy et
 al.\cite{gulsoy} would respectively yield $N_c$ = 46,656 and 18,750 for the same
 example. Such a decrease in the value of $N_c$ leads to an increase in the value
-of $P_s$ according to equation (\ref{eqgeneral}).
+of $P_s$ according to equation (\ref{ps}).
 
 \subsection{Method: Enhanced k-hop Coloring}
 The approach introduced in the previous section for calculating success
