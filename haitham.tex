@@ -381,8 +381,24 @@ chromatic polynomial recurrence detailed in equation (\ref{eqchromatic}).
 \section{Experiments}
 
 \subsection{Datasets}
-Here we list the datasets used in experiments. I think we can use the MINT
-datasets for multiple organisms.
+In our experiments, we used two datasets of protein interactions
+in Homo Sapiens and Rattus Norvegicus from MINT\cite{mint1} (the Molecular
+INTeraction database). The first one is a large dataset of 15472 interactions
+among 6122 proteins. The second one is a smaller dataset of 806 interactions
+among 631 proteins. Each interaction is described by two interacting proteins and a
+reliability score between 0 and 1 that represents the level of confidence that
+this interaction truly exists. MINT calculates reliability scores of
+interactions using a heuristic integration of available evidence, including the
+size and type of the experiment reporting the interaction, sequence similarity
+of ortholog proteins and the number of publications supporting the
+interaction\cite{mint2n}.
+
+
+\begin{figure}[h]
+\centerline{\psfig{file=test.eps,width=7cm}}
+\caption{test\ldots\ldots\ldots}
+\end{figure}
+
 
 \subsection{Validation Experiments}
 Here we list the validation experiments we did and their results. I think we
