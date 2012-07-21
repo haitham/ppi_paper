@@ -2,6 +2,8 @@
 %\documentclass[square]{ws-procs11x85}
 \documentclass{ws-procs11x85}
 
+\usepackage{subfigure}
+
 \begin{document}
 
 \title{Paper Title}
@@ -388,17 +390,26 @@ among 6122 proteins. The second one is a smaller dataset of 806 interactions
 among 631 proteins. Each interaction is described by two interacting proteins and a
 reliability score between 0 and 1 that represents the level of confidence that
 this interaction truly exists. MINT calculates reliability scores of
-interactions using a heuristic integration of available evidence, including the
+interactions using a heuristic formula of available evidence, including the
 size and type of the experiment reporting the interaction, sequence similarity
 of ortholog proteins and the number of publications supporting the
-interaction\cite{mint2n}.
+interaction\cite{mint2}.
 
+\subsection{Performance assessment and comparison}
 
 \begin{figure}[h]
-\centerline{\psfig{file=test.eps,width=7cm}}
-\caption{test\ldots\ldots\ldots}
+\centering
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{iterations_hsa_6}
+	\includegraphics{results/iterations/hsa6.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{iterations_hsa_8}
+	\includegraphics{results/iterations/hsa6.eps}
+}
 \end{figure}
-
 
 \subsection{Validation Experiments}
 Here we list the validation experiments we did and their results. I think we
@@ -423,25 +434,6 @@ produces a more optimal pathway when run on one of these random networks.
  value for any of the tested GO terms gives us the final functional enrichment
  p-value.
 
-\subsection{Comparison with Sharan}
-This is just a temporary title for this subsection, I'm not very sure what to
-name it.
-
-\paragraph{}
-We measure the time and number of iterations needed by our method to obtain
-70\%, 90\% and 99\% confidence pathways of lengths 6, 7, 8 and 9 nodes. We
-compare these numbers against the ones by Sharan's method for the same cases.
-
-\paragraph{}
-We run our method for 500 iterations and measure the incremental success
-probabilty against iteration number. We do this experiment many times take the
-average curve. We do the same experiment using Sharan's method and obtain a
-second curve. We also measure the average practical success probability, which
-is the observed probability that the DP algorithm finds the optimal solution in
-a certain iteration or before it. We compare the three curves targetting two
-conclusions: (1) our method is experimentally solid because our calculated
-success probabiilities are lower than the observed ones; and (2) our method
-outperforms Sharan's method.
 
 \section{Conclusion}
 Here goes the conclusion.
