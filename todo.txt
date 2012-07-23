@@ -1,3 +1,2 @@
 More experiments for rat 8, hsa 6, 8
-ms = seconds
 figures: 6, 8 - 6, 8, 9

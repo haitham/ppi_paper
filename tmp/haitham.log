@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  21 JUL 2012 19:26
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  22 JUL 2012 19:52
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -288,16 +288,42 @@ File: maxk.eps Graphic file (type eps)
  <maxk.eps> [6]
 File: results/iterations/hsa6.eps Graphic file (type eps)
  <results/iterations/hsa6.eps>
-File: results/iterations/hsa6.eps Graphic file (type eps)
- <results/iterations/hsa6.eps>
-[7] [8] (./haitham.bbl) [9] (./haitham.aux) ) 
+File: results/iterations/hsa8.eps Graphic file (type eps)
+ <results/iterations/hsa8.eps>
+File: results/iterations/rat6.eps Graphic file (type eps)
+
+<results/iterations/rat6.eps>
+File: results/iterations/rat8.eps Graphic file (type eps)
+ <results/iterations/rat8.eps> [7]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: results/times/time_hsa6.eps Graphic file (type eps)
+<results/times/time_hsa6.eps>
+File: results/times/time_hsa8.eps Graphic file (type eps)
+ <results/times/time_hsa8.eps>
+File: results/times/time_rat6.eps Graphic file (type eps)
+
+<results/times/time_rat6.eps>
+File: results/times/time_rat8.eps Graphic file (type eps)
+ <results/times/time_rat8.eps>
+File: results/times/time_rat9.eps Graphic file (type eps)
+
+<results/times/time_rat9.eps>
+
+LaTeX Warning: Float too large for page by 151.62863pt on input line 474.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8] (./haitham.bbl) [9] [10] [11] (./haitham.aux) ) 
 Here is how much of TeX's memory you used:
- 2405 strings out of 493630
- 27372 string characters out of 3146714
+ 2438 strings out of 493630
+ 27940 string characters out of 3146714
  87529 words of memory out of 3000000
- 5688 multiletter control sequences out of 15000+200000
+ 5712 multiletter control sequences out of 15000+200000
  10741 words of font info for 41 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  34i,6n,30p,540b,272s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on haitham.dvi (9 pages, 38840 bytes).
+Output written on haitham.dvi (11 pages, 42316 bytes).

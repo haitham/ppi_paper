@@ -398,6 +398,7 @@ interaction\cite{mint2}.
 \subsection{Performance assessment and comparison}
 
 \begin{figure}[h]
+\label{iterations}
 \centering
 \subfigure{
 	\rule{6cm}{5cm}
@@ -407,9 +408,79 @@ interaction\cite{mint2}.
 \subfigure{
 	\rule{6cm}{5cm}
 	\label{iterations_hsa_8}
-	\includegraphics{results/iterations/hsa6.eps}
+	\includegraphics{results/iterations/hsa8.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{iterations_rat_6}
+	\includegraphics{results/iterations/rat6.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{iterations_rat_8}
+	\includegraphics{results/iterations/rat8.eps}
 }
 \end{figure}
+
+
+We run an experiment to measure how fast the value of confidence rises with each
+iteration in both our method and the one presented by Scott et al.\cite{scott}.
+We run each method for 500 iterations and measure the overall confidence after
+each iteration is finished. We also compare these results with the practical
+confidence, which is the probability of finding the optimal pathway as
+practically observed. To compute the practical confidence, we run 500
+coloring iterations and assign each iteration a value $s \in \{0, 1\}$, where
+$s = 1$ if the optimal pathway is found in this iteration or in a preceding one,
+and $s = 0$ otherwise. We repeat this experiment multiple times and take the
+average values of $s$ for each iteration as the practical confidence of this
+iteration. Figure \ref{iterations} shows the confidence value as more iterations
+finish, for our method and Scott et al. and also the practical confidence value.
+The figure shows a gap between Scott et al. confidence and practical confidence,
+which is expected because of the conservative way they use to calculate success
+probability of an iteration, as discussed in section \ref{background}. This gap
+increases as the path length parameter increases. Our method closes this gap and
+produces confidence values that are closer to the practical confidence values.
+The figure also shows that our method produces higher confidence values than
+Scott et al. for the same number of iterations.
+
+\begin{figure}[h]
+\label{times}
+\centering
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{times_hsa_6}
+	\includegraphics{results/times/time_hsa6.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{times_hsa_8}
+	\includegraphics{results/times/time_hsa8.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{times_rat_6}
+	\includegraphics{results/times/time_rat6.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{times_rat_8}
+	\includegraphics{results/times/time_rat8.eps}
+}
+\subfigure{
+	\rule{6cm}{5cm}
+	\label{times_rat_9}
+	\includegraphics{results/times/time_rat9.eps}
+}
+\end{figure}
+
+We also measure the total time taken by our method to reach a given confidence
+level as opposed to that of Scott et al.\cite{scott}. We run both methods for
+500 iterations and measure, after each iteration, the confidence level reached
+and the overall time taken by both methods. Figure \ref{times} shows that our
+method takes less time than Scott et al. to achieve the same level of
+confidence. The figure also shows that the our performance lead increases as
+the path length parameter increases.
+
 
 \subsection{Validation Experiments}
 Here we list the validation experiments we did and their results. I think we
