@@ -1,8 +1,24 @@
 %\documentclass[draft]{ws-procs11x85}
 %\documentclass[square]{ws-procs11x85}
 \documentclass{ws-procs11x85}
-
+\usepackage{color}
+\usepackage{graphicx}
 \usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{titlesec}
+\usepackage{wrapfig}
+
+
+%\renewcommand{\baselinestretch}{0.98}
+
+\long\def \ignoreme#1{}
+\newcommand{\goodgap}{
+        \hspace{\subfigtopskip}
+        \hspace{\subfigbottomskip}
+}
+
 
 \begin{document}
 
@@ -247,10 +263,27 @@ present an enhanced color-coding method for detecting pathways in protein
 interaction networks.
 
 \subsection{Success Probability: a Tighter Bound}
-Our key contribution is to establish the relationship among network topology,
-node colors and sucess probability in a single iteration of color coding. In
-this section, we focus on one coloring iteration and describe how we compute the
-probability of success in that iteration.
+
+
+\begin{wrapfigure}{r}{0.40\textwidth}
+  \centering
+  \includegraphics[width=0.35\textwidth]{figures/colors}
+%\centerline{\psfig{file=colors.eps,width=9cm,height=6cm}}
+  \caption{ A hypothetical protein interaction network with six nodes
+    \{a, b, c, d, e, f\}. The network is colored using three colors
+    \{$c_1$, $c_2$, $c_3$\}. Each node carries two labels.  The label
+    on the left denotes the color assigned to this node.  The one on
+    the right is the node's $k_{max}$ value. For instance node d is
+    assigned to color $c_2$ and its $k_{max}$ value is 1 (i.e., there
+    is no other node assigned to color $c_2$ within 1-hop of node d). }
+  \label{fig:colors}
+\end{wrapfigure}
+
+
+Our key contribution is to establish the relationship among network
+topology, node colors and sucess probability in a single iteration of
+color coding. In this section, we focus on one coloring iteration and
+describe how we compute the probability of success in that iteration.
 
 Assume that we are given a protein interaction network similar to the one
 described in section \ref{introduction}, denoted by $G = (V, E, w)$, where
@@ -267,35 +300,28 @@ color that path regardless of whether it yields colorful or not. Before we
 discuss how we compute $N_c$, we describe the following concepts.
 
 \begin{arabiclist}[3]
-\item $k$ neighborhood of a node. Let $v \in V$ be a node in $G$, and $k$ be a
-natural number. $\Psi_k(v)$ is the set of nodes where $\forall u \in V
-\backslash \{v\}$, $u \in \Psi_k(v)$ if and only if $u$ is reachable from $v$
-in $k$ hops of less. We call $\Psi_k(v)$ the $k$ neighborhood of $v$. Figure
-\ref{colors} shows an example of a colored network. In this example, $\Psi_1(a)
-= \{d\}$ because the node $d$ is the only node that is reachable from the
-node $a$ in 1 hop (or less). Similarly, $\Psi_1(f) = \{c, e\}$, $\Psi_2(a) =
-\{d, e\}$ and $\Psi_2(f) = \{c, e, b, d\}$.
-\item $k_{max}$ value of a node. Let $v \in V$ be a node in $G$. $k_{max}(v)$ is
-the maximal value of $k$ such that $\forall u \in \Psi_k(v)$: $c(u) \neq c(v)$.
-Figure \ref{colors} also shows the $k_{max}$ values for the nodes in the
-network. For example, $\forall u \in \Psi_1(f) = \{c, e\}$, $c(u) \neq
-c(f)$. If we try to expand to $\Psi_2(f) = \{c, e, b, d\}$, we find that $c(d)
-= c(f) = c_2$. Therefore $k_{max}(f) = 1$. Similarly, $k_{max}(a) = 3$ and
-$k_{max}(b) = 0$.
+\item $k$ neighborhood of a node. Let $v \in V$ be a node in $G$, and
+  $k$ be a natural number. $\Psi_k(v)$ is the set of nodes where
+  $\forall u \in V \backslash \{v\}$, $u \in \Psi_k(v)$ if and only if
+  $u$ is reachable from $v$ in $k$ hops of less. We call $\Psi_k(v)$
+  the $k$ neighborhood of $v$. Figure~\ref{fig:colors} shows an
+  example of a colored network. In this example, $\Psi_1(a) = \{d\}$
+  because the node $d$ is the only node that is reachable from the
+  node $a$ in 1 hop (or less). Similarly, $\Psi_1(f) = \{c, e\}$,
+  $\Psi_2(a) = \{d, e\}$ and $\Psi_2(f) = \{c, e, b, d\}$.
+\item $k_{max}$ value of a node. Let $v \in V$ be a node in $G$.
+  $k_{max}(v)$ is the maximal value of $k$ such that $\forall u \in
+  \Psi_k(v)$: $c(u) \neq c(v)$.  Figure~\ref{fig:colors} also shows
+  the $k_{max}$ values for the nodes in the network. For example,
+  $\forall u \in \Psi_1(f) = \{c, e\}$, $c(u) \neq c(f)$. If we try to
+  expand to $\Psi_2(f) = \{c, e, b, d\}$, we find that $c(d) = c(f) =
+  c_2$. Therefore $k_{max}(f) = 1$. Similarly, $k_{max}(a) = 3$ and
+  $k_{max}(b) = 0$.
 \item $k_{max}$
 configuration of a path. Let $\Phi = v_1 \rightarrow v_2 \rightarrow \ldots \rightarrow v_m$ be a path of length $m$ in $G$. The
 $k_{max}$ configuration of $\Phi$ is the sequence $[k_{max}(v_1),
 k_{max}(v_2), \ldots , k_{max}(v_m)]$.
 \end{arabiclist}
-
-
-\begin{figure}[h]
-\centerline{\psfig{file=colors.eps,width=9cm,height=6cm}}
-\caption{(a) An example colored network. Each node carries two labels. The
-label on the left is the color assigned to this node. The label on the right is
-the node's $k_{max}$ value}
-\label{colors}
-\end{figure}
 
 
 
@@ -327,15 +353,26 @@ where $u$ and $v$ are any pair of adjacent nodes, $W - uv$ is the graph $W$
 after removing the edge $uv$, and $W / uv$ is the graph $W$ after merging the
 nodes $u$ and $v$.
 
-\begin{figure}[h]
-\centerline{\psfig{file=maxk.eps,width=16.5cm}}
-\caption{(a) An example 6-node path with its $max\_k$ configuration shown above
-it. Each $max\_k$ value translates to the number of nodes that have to be of
-different color on either direction. (b) The corresponding constraint graph $W$:
-each pair of adjacent nodes have to be of different color. Finding the value of
-the chromatic polynomial $P(W, m)$ yields the number of coloring possibilities
-for the path under the given constraints.}
-\label{maxk}
+\begin{figure}[t]
+\centering
+\subfigure[]{
+  \label{maxk:path}
+  \includegraphics[width = 0.35\textwidth]{figures/kmax_path}
+}
+\goodgap
+\subfigure[]{
+  \label{maxk:graph}
+  \includegraphics[width = 0.27\textwidth]{figures/kmax_graph}
+}
+%\centerline{\psfig{file=maxk.eps,width=16.5cm}}
+  \caption{(a) An example 6-node path with its $max\_k$ configuration
+    shown above it. Each $max\_k$ value translates to the number of
+    nodes that have to be of different color on either direction. (b)
+    The corresponding constraint graph $W$: each pair of adjacent
+    nodes have to be of different color. Finding the value of the
+    chromatic polynomial $P(W, m)$ yields the number of coloring
+    possibilities for the path under the given constraints.}
+  \label{maxk}
 \end{figure}
 
 According to this method, the value of $N_c$ for the example path shown in
@@ -382,7 +419,10 @@ chromatic polynomial recurrence detailed in equation (\ref{eqchromatic}).
 
 \section{Experiments}
 
-\subsection{Datasets}
+In this section, we evaluate our method on real datasets. We implemented our
+method in Java language. We ran our experiments on {\color {red} system details}
+
+\paragraph{Datasets}
 In our experiments, we used two datasets of protein interactions
 in Homo Sapiens and Rattus Norvegicus from MINT\cite{mint1} (the Molecular
 INTeraction database). The first one is a large dataset of 15472 interactions
@@ -393,34 +433,76 @@ this interaction truly exists. MINT calculates reliability scores of
 interactions using a heuristic formula of available evidence, including the
 size and type of the experiment reporting the interaction, sequence similarity
 of ortholog proteins and the number of publications supporting the
-interaction\cite{mint2}.
+interaction\cite{mint2}. 
+
+We use the negative logarithm of MINT reliability scores as edge weights. In all
+experiments, we find pathways starting within the set of membrane proteins and
+ending within the set of transcription factors. We use the Gene Ontology
+database\cite{go} to identify membrane proteins and transcription factors of each
+dataset. We identify membrane proteins as the ones under the terms GO:0005886
+and GO:0004872, and transcription factors as the proteins under the terms
+GO:0000988, GO:0001071 and GO:0006351.
 
 \subsection{Performance assessment and comparison}
 
+
 \begin{figure}[h]
-\label{iterations}
 \centering
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{iterations_hsa_6}
-	\includegraphics{results/iterations/hsa6.eps}
+\subfigure[]{
+	\label{times_hsa_6}
+	\includegraphics{results/times/time_hsa6}
 }
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{iterations_hsa_8}
-	\includegraphics{results/iterations/hsa8.eps}
+\goodgap
+\subfigure[]{
+	\label{times_hsa_8}
+	\includegraphics{results/times/time_hsa8}
 }
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{iterations_rat_6}
-	\includegraphics{results/iterations/rat6.eps}
+\subfigure[]{
+	\label{times_rat_6}
+	\includegraphics{results/times/time_rat6}
 }
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{iterations_rat_8}
-	\includegraphics{results/iterations/rat8.eps}
+\goodgap
+\subfigure[]{
+	\label{times_rat_8}
+	\includegraphics{results/times/time_rat8}
 }
+\subfigure[]{
+	\label{times_rat_9}
+	\includegraphics{results/times/time_rat9}
+}
+\caption{blah blah}
+\label{times}
 \end{figure}
+
+
+
+
+
+\begin{figure}[h]
+\centering
+\subfigure[]{
+	\label{iterations_hsa_6}
+	\includegraphics{results/iterations/hsa6}
+}
+\goodgap
+\subfigure[]{
+	\label{iterations_hsa_8}
+	\includegraphics{results/iterations/hsa8}
+}
+\subfigure[]{
+	\label{iterations_rat_6}
+	\includegraphics{results/iterations/rat6}
+}
+\goodgap
+\subfigure[]{
+	\label{iterations_rat_8}
+	\includegraphics{results/iterations/rat8}
+}
+\caption{write your caption here (a) asdakj (b) anslkjal
+}
+\label{iterations}
+\end{figure}
+
 
 
 We run an experiment to measure how fast the value of confidence rises with each
@@ -443,56 +525,72 @@ produces confidence values that are closer to the practical confidence values.
 The figure also shows that our method produces higher confidence values than
 Scott et al. for the same number of iterations.
 
-\begin{figure}[h]
-\label{times}
-\centering
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{times_hsa_6}
-	\includegraphics{results/times/time_hsa6.eps}
-}
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{times_hsa_8}
-	\includegraphics{results/times/time_hsa8.eps}
-}
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{times_rat_6}
-	\includegraphics{results/times/time_rat6.eps}
-}
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{times_rat_8}
-	\includegraphics{results/times/time_rat8.eps}
-}
-\subfigure{
-	\rule{6cm}{5cm}
-	\label{times_rat_9}
-	\includegraphics{results/times/time_rat9.eps}
-}
-\end{figure}
 
-We also measure the total time taken by our method to reach a given confidence
-level as opposed to that of Scott et al.\cite{scott}. We run both methods for
-500 iterations and measure, after each iteration, the confidence level reached
-and the overall time taken by both methods. Figure \ref{times} shows that our
+We also measure the total time taken by our method to reach a given
+confidence level as opposed to that of Scott {\it et
+  al.}~\cite{scott}. We run both methods for 500 iterations and
+measure, after each iteration, the confidence level reached and the
+overall time taken by both methods. Figure \ref{times} shows that our
 method takes less time than Scott et al. to achieve the same level of
-confidence. The figure also shows that the our performance lead increases as
-the path length parameter increases.
+confidence. The figure also shows that the our performance lead
+increases as the path length parameter increases.
+
 
 
 \subsection{Validation Experiments}
-Here we list the validation experiments we did and their results. I think we
-should do some validation experiments similar to those done in Sharan's paper,
-using weight p-value and functional enrichment as validitiy measures.
+\label{sec:validation}
 
-\subsubsection{Validation using Weight p-value}
-For each dataset we use, we should obtain the 99 percent confidence optimal
-pathway and compare it with optimal pathways obtained we obtain from random
-networks. We generate random networks by shuffling edges of the original
-network. The weight p-value is the percentage of cases where the algorithm
-produces a more optimal pathway when run on one of these random networks.
+
+So far we have shown that our method outperforms existing coloring
+strategies in terms of the running time performance. In this section,
+we evaluate the biological significance of the results we can find
+using our method. 
+
+It is worth mentioning that our method returns the same results as
+Scott {\it et al.}~\cite{scott} when both of them are allowed to reach
+a high confidence value (such as 99\% confidence). The main difference
+is that our method scales to larger networks and longer paths.
+Therefore, here we will only focus on the results obtained by our
+method.
+
+
+\subsubsection{Statistical significance of the results}
+\label{sec:zscore}
+
+%\begin{wraptable}{r}{0.40\textwidth}
+\begin{table}[t]
+  \tbl{Table caption should come here.}
+{
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
+\hline
+	&	\multicolumn{9}{c|}{Path Length}		\\ \cline{2-10}
+Dataset	&	\multicolumn{3}{c|}{6}	&	\multicolumn{3}{c|}{7}	&
+	\multicolumn{3}{c|}{8}	\\
+	\cline{2-10} 
+		&	\begin{math}\mu\end{math}	&	\begin{math}\theta\end{math}	&
+	\begin{math}Z\end{math} & \begin{math}\mu\end{math}	&	\begin{math}\theta\end{math}	&
+	\begin{math}Z\end{math} & \begin{math}\mu\end{math}	&
+	\begin{math}\theta\end{math}	& \begin{math}Z\end{math}	\\ \hline
+{\it H.sapiens}	&	5.906	&	0.129	&	5.409	&	7.074	&	0.130	&	5.477	&	8.341	&
+0.221	&	5.764	\\
+{\it R.norvegicus}	&	4.975	&	4.540	&	0.889	&	7.307	&	5.025	&	1.453	&
+8.457	&	4.858	&	1.467
+\\
+\hline
+\end{tabular}
+}
+\label{tab:zscore}
+\end{table}
+%\end{wraptable}
+
+In this section
+
+For each dataset we use, we should obtain the 99 percent confidence
+optimal pathway and compare it with optimal pathways obtained we
+obtain from random networks. We generate random networks by shuffling
+edges of the original network. The weight p-value is the percentage of
+cases where the algorithm produces a more optimal pathway when run on
+one of these random networks.
 
 \subsubsection{Validation using Functional Enrichment}
  For each dataset, we we obtain the 99 percent confidence optimal pathway and
@@ -504,6 +602,29 @@ produces a more optimal pathway when run on one of these random networks.
  further understanding about the details of this test). The maximum enrichment
  value for any of the tested GO terms gives us the final functional enrichment
  p-value.
+ 
+ \subsection{Discussing paths found}
+ 
+ \begin{figure}[h]
+\centering
+\subfigure[All proteins annotated by GO:0042058 - regulation of epidermal growth
+factor receptor signaling pathway]{
+	\label{fig:path_go0042058}
+	\includegraphics[width = 0.8\textwidth]{figures/path_go0042058}
+}
+\subfigure[First five proteins annotated by GO:0042059 - negative regulation of
+epidermal growth factor receptor signaling pathway]{
+	\label{fig:path_go0042059}
+	\includegraphics[width = 0.8\textwidth]{figures/path_go0042059_2}
+}
+\subfigure[All proteins annotated by GO:0046875 - ephrin receptor binding]{
+	\label{fig:path_go0046875}
+	\includegraphics[width = 0.8\textwidth]{figures/path_go0046875}
+}
+\caption{Caption goes here}
+\label{fig:paths}
+\end{figure}
+ 
 
 
 \section{Conclusion}
