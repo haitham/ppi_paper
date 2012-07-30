@@ -1,11 +1,54 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: haitham.aux
+This is BibTeX, Version 0.99d (Web2C 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: haitham.aux
 The style file: ws-procs11x85.bst
 Database file #1: references.bib
 <ws-procs11x85.bst>
 World Scientific's Bibliography Style File for Proceedings
 You can't pop an empty literal stack for entry scott
-while executing---line 1340 of file ws-procs11x85.bst
+while executing---line 2679 of file ws-procs11x85.bst
 Warning--empty volume in alon
 You can't pop an empty literal stack for entry gulsoy
-while executing---line 1340 of file ws-procs11x85.bst
+while executing---line 2679 of file ws-procs11x85.bst
+You've used 17 entries,
+            2822 wiz_defined-function locations,
+            787 strings with 9862 characters,
+and the built_in function-call counts, 4943 in all, are:
+= -- 415
+> -- 363
+< -- 6
++ -- 126
+- -- 109
+* -- 453
+:= -- 754
+add.period$ -- 18
+call.type$ -- 17
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 226
+empty$ -- 324
+format.name$ -- 109
+if$ -- 1145
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 18
+newline$ -- 55
+num.names$ -- 19
+pop$ -- 29
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 180
+stack$ -- 0
+substring$ -- 194
+swap$ -- 134
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 2
+type$ -- 0
+warning$ -- 1
+while$ -- 41
+width$ -- 19
+write$ -- 141
 (There were 2 error messages)
