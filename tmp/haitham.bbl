@@ -5,16 +5,12 @@ B.~Schwikowski, P.~Uetz and S.~Fields, {\em Nature Biotechnology} {\bf 18},
   1257 (December 2000).
 
 \bibitem{uetz}
-P.~Uetz, L.~Giot, G.~Cagney, T.~A. Mansfield, R.~S. Judson, J.~R. Knight,
-  D.~Lockshon, V.~Narayan, M.~Srinivasan, P.~Pochart, A.~Qureshi-Emili, Y.~Li,
-  B.~Godwin, D.~Conover, T.~Kalbfleisch, G.~Vijayadamodar, M.~Yang,
-  M.~Johnston, S.~Fields and J.~M. Rothberg, {\em Nature} {\bf 403}, 623
+P.~Uetz, L.~Giot and G.~Cagney~{\it et al.}, {\em Nature} {\bf 403}, 623
   (February 2000).
 
 \bibitem{kelley}
-B.~P. Kelley, R.~Sharan, R.~M. Karp, T.~Sittler, D.~E. Root, B.~R. Stockwell
-  and T.~Ideker, {\em Proceedings of the National Academy of Sciences} {\bf
-  100}, 11394 (September 2003).
+B.~P. Kelley, R.~Sharan and R.~M. Karp~{\it et al.}, {\em Proceedings of the
+  National Academy of Sciences} {\bf 100}, 11394 (September 2003).
 
 \bibitem{scott}
 J.~Scott, T.~Ideker, R.~M. Karp and R.~Sharan, Efficient algorithms for
@@ -45,8 +41,8 @@ S.~Lu, F.~Zhang, J.~Chen and S.-H. Sze, {\em Algorithmica} {\bf 48}, 363
   (August 2007).
 
 \bibitem{steffen}
-M.~Steffen, A.~Petti, J.~Aach, P.~D'haeseleer and G.~Church, {\em BMC
-  Bioinformatics} {\bf 3}, p.~34  (2002).
+M.~Steffen, A.~Petti and J.~Aach~{\it et al.}, {\em BMC Bioinformatics} {\bf
+  3}, p.~34  (2002).
 
 \bibitem{bebek}
 G.~Bebek and J.~Yang, {\em BMC Bioinformatics} {\bf 8}, p. 335  (2007).
@@ -56,31 +52,23 @@ A.~Gitter, J.~Klein-Seetharaman, A.~Gupta and Z.~Bar-Joseph, {\em Nucleic Acids
   Research} {\bf 39}, p. e22  (2011).
 
 \bibitem{dost}
-B.~Dost, T.~Shlomi, N.~Gupta, E.~Ruppin, V.~Bafna and R.~Sharan, Qnet: A tool
-  for querying protein interaction networks, in {\em Research in Computational
-  Molecular Biology\/},  eds. T.~Speed and H.~Huang, Lecture Notes in Computer
-  Science, Vol.~4453 (Springer Berlin / Heidelberg, 2007) pp. 1--15.
-\newblock 10.1007/978-3-540-71681-5_1.
+B.~Dost, T.~Shlomi and N.~G. {\it et al.}, {\em Journal of Computational
+  Biology} {\bf 15}, 913  (2008).
 
 \bibitem{dong}
 F.~Dong, K.~Koh and K.~Teo, {\em Chromatic Polynomials And Chromaticity of
   Graphs} (World Scientific Pub., 2005).
 
 \bibitem{mint1}
-A.~Chatr-aryamontri, A.~Ceol, L.~Montecchi-Palazzi, G.~Nardelli, M.~V.
-  Schneider, L.~Castagnoli and G.~Cesareni, {\em Nucleic Acids Research} {\bf
-  35}, 572  (2007).
+A.~Chatr-aryamontri, A.~Ceol and L.~M.-P. {\it et al.}, {\em Nucleic Acids
+  Research} {\bf 35}, 572  (2007).
 
 \bibitem{mint2}
-A.~Ceol, A.~Chatr~Aryamontri, L.~Licata, D.~Peluso, L.~Briganti, L.~Perfetto,
-  L.~Castagnoli and G.~Cesareni, {\em Nucleic Acids Research} {\bf 38}, D532
-  (2010).
+A.~Ceol, A.~Chatr~Aryamontri and L.~Licata~{\it et al.}, {\em Nucleic Acids
+  Research} {\bf 38}, D532  (2010).
 
 \bibitem{go}
-M.~Ashburner, C.~A. Ball, J.~A. Blake, D.~Botstein, H.~Butler, J.~M. Cherry,
-  A.~P. Davis, K.~Dolinski, S.~S. Dwight, J.~T. Eppig, M.~A. Harris, D.~P.
-  Hill, L.~Issel-Tarver, A.~Kasarskis, S.~Lewis, J.~C. Matese, J.~E.
-  Richardson, M.~Ringwald, G.~M. Rubin and G.~Sherlock, {\em Nature genetics}
+M.~Ashburner, C.~A. Ball and J.~A. Blake~{\it et al.}, {\em Nature genetics}
   {\bf 25}, 25 (May 2000).
 
 \end{thebibliography}

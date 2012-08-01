@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  30 JUL 2012 19:05
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=latex 2011.9.28)  1 AUG 2012 04:01
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -314,142 +314,77 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 (./haitham.aux)
 \openout1 = `haitham.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Try loading font information for U+msa on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+ [1
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 78.
  (c:/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 31.
+LaTeX Font Info:    Try loading font information for U+msb on input line 78.
 
 (c:/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
 
 (c:/texlive/2011/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
- [1
-
-] [2] [3] [4]
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 300.
- [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+ [1] [2] [3]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 381.
+ [4]
 File: figures/colors.eps Graphic file (type eps)
 
-<figures/colors.eps>
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 367.
- [6]
+<figures/colors.eps> [5]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 534.
 File: figures/kmax_path.eps Graphic file (type eps)
  <figures/kmax_path.eps>
 File: figures/kmax_graph.eps Graphic file (type eps)
  <figures/kmax_graph.eps>
-[7] [8] (./expts.tex [9]
-File: results/iterations/hsa6.eps Graphic file (type eps)
- <results/iterations/hsa6.eps>
-File: results/iterations/hsa8.eps Graphic file (type eps)
-
-<results/iterations/hsa8.eps>
-File: results/iterations/rat6.eps Graphic file (type eps)
- <results/iterations/rat6.eps>
-File: results/iterations/rat8.eps Graphic file (type eps)
-
-<results/iterations/rat8.eps>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: results/times/time_hsa6.eps Graphic file (type eps)
-<results/times/time_hsa6.eps>
+[6] [7]
 File: results/times/time_hsa8.eps Graphic file (type eps)
  <results/times/time_hsa8.eps>
-File: results/times/time_rat6.eps Graphic file (type eps)
-
-<results/times/time_rat6.eps>
 File: results/times/time_rat8.eps Graphic file (type eps)
- <results/times/time_rat8.eps>
-File: results/times/time_rat9.eps Graphic file (type eps)
+ <results/times/time_rat8.eps> [8]
+File: results/iterations/hsa6.eps Graphic file (type eps)
 
-<results/times/time_rat9.eps>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10] [11] [12]
+<results/iterations/hsa6.eps>
+File: results/iterations/rat6.eps Graphic file (type eps)
+ <results/iterations/rat6.eps> [9] [10]
 File: results/enrichment/enrich-rank.eps Graphic file (type eps)
- <results/enrichment/enrich-rank.eps>
 
-Package wrapfig Warning: Collision between wrapping environments on input line 
-214.
-
-File: results/enrichment/enrich-score.eps Graphic file (type eps)
-<results/enrichment/enrich-score.eps> [13]
+<results/enrichment/enrich-rank.eps>
 File: figures/path_go0042058.eps Graphic file (type eps)
  <figures/path_go0042058.eps>
-File: figures/path_go0042059_2.eps Graphic file (type eps)
-
-<figures/path_go0042059_2.eps>
 File: figures/path_go0046875.eps Graphic file (type eps)
- <figures/path_go0046875.eps>) (./haitham.bbl
-[14]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.63 \newblock 10.1007/978-3-540-71681-5_
-                                         1.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.64 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.64 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.64 
-     
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-) [15] (./haitham.aux) ) 
+<figures/path_go0046875.eps>
+File: figures/path_go0042059_2.eps Graphic file (type eps)
+ <figures/path_go0042059_2.eps> [11] (./haitham.bbl) [12] (./haitham.aux) ) 
 Here is how much of TeX's memory you used:
- 3266 strings out of 493630
- 39512 string characters out of 3146714
- 100648 words of memory out of 3000000
+ 3262 strings out of 493630
+ 39302 string characters out of 3146714
+ 101648 words of memory out of 3000000
  6492 multiletter control sequences out of 15000+200000
- 12535 words of font info for 47 fonts, out of 3000000 for 9000
+ 15642 words of font info for 59 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 34i,9n,30p,559b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,9n,30p,559b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on haitham.dvi (15 pages, 68504 bytes).
+Output written on haitham.dvi (13 pages, 68720 bytes).
